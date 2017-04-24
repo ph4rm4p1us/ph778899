@@ -1,0 +1,71 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="col-lg-11 col-xs-10">
+        <div class="mainmenu">
+            <a href="{% url 'Sales:index' %}" class="menuitem">
+                <div class="icon">
+                    <i class="fa fa-search"></i>
+                </div>
+                <div class="text">
+                    المبيعات
+                </div>
+            </a>
+            <a href="#" class="menuitem bg-orange">
+                <div class="icon">
+                    <i class="fa fa-motorcycle"></i>
+                </div>
+                <div class="text">
+                    الدليفري
+                </div>
+            </a>
+            <a href="#" class="menuitem bg-green">
+                <div class="icon">
+                    <i class="fa fa-book"></i>
+                </div>
+                <div class="text">
+                    الحسابات
+                </div>
+            </a>
+            <a href="#" class="menuitem bg-red">
+                <div class="icon">
+                    <i class="fa fa-gear"></i>
+                </div>
+                <div class="text">
+                    إدارة البرنامج
+                </div>
+            </a>
+            <a href="#" class="menuitem bg-purple">
+                <div class="icon">
+                    <i class="fa fa-barcode"></i>
+                </div>
+                <div class="text">
+                    المخزون
+                </div>
+            </a>
+            <a href="#" class="menuitem bg-black">
+                <div class="icon">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="text">
+                    المشتريات
+                </div>
+            </a>
+            <a href="#" class="menuitem bg-pharma-blue">
+                <div class="icon">
+                    <i class="fa fa-bank"></i>
+                </div>
+                <div class="text">
+                    الفروع
+                </div>
+            </a>
+            <a href="#" class="menuitem bg-darkred">
+                <div class="icon">
+                    <i class="fa fa-list-alt"></i>
+                </div>
+                <div class="text">
+                    التقارير
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}
