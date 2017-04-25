@@ -16,7 +16,7 @@ class Pharmacy_Employee(models.Model):
 
 class Medicine_DB(models.Model):
     int_barcode = models.IntegerField()
-    
+
 
 
 
