@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import Permission, User
 
+
 # Create your models here.
+
+
 '''
 class Pharmacy(models.Model):
     owner = models.ForeignKey(User, unique=True)
@@ -40,14 +43,30 @@ class Clients(models.Model):
     phone = models.CharField(max_length=15)
     address = models.CharField(max_length=200, blank=False, null=False)
     discount_perc = models.IntegerField(max_length=3, blank=False, default=0)
+    sales = models.ForeignKey('Sales.SalesInvoice', on_delete=models.CASCADE, blank=False)
+    pharmacy = models.ForeignKey(Pharmacy, on_delete=models.CASCADE, blank=False)
+    # have to add foreign keys
 
 
-<<<<<<< HEAD
-=======
-class Medicine_DB(models.Model):
-    int_barcode = models.IntegerField()
+class Employees(models.Model):
+    first_name = models.CharField(max_length=30, blank=False)
+    last_name = models.CharField(max_length=30, blank=False)
+    user_name = models.CharField(max_length=100, blank=False)
+    password = models.CharField(max_length=30, blank=False)
+    phone = models.CharField(max_length=15, blank=False)
+    address = models.CharField(max_length=200, blank=False)
+    date_joined = models.DateTimeField(blank=False)
+    email = models.CharField(blank=False, max_length=100)
+    pharmacy = models.ForeignKey(Pharmacy, on_delete=models.CASCADE)
 
->>>>>>> e689dbcb92eb2de7d5de0ea435196dd6e76112b6
+
+class Branches(models.Model):
+    branch_name = models.CharField(max_length=200, blank=False)
+    location = models.CharField(max_length=200, blank=False)
+    phone = models.CharField(max_length=15, blank=False)
+    pharmacy = models.ForeignKey(Pharmacy, on_delete=models.CASCADE)
+
+
 
 
 
