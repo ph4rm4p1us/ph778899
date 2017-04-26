@@ -22,6 +22,13 @@ urlpatterns = [
     url(r'^$', include('Core.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^Sales/', include('Sales.urls')),
+    url(r'^Delivery/', include('Delivery.urls')),
+    url(r'^Accounts/', include('Accounts.urls')),
+    url(r'^System_Setting/', include('System_Setting.urls')),
+    url(r'^Stock/', include('Stock.urls')),
+    url(r'^Purchases/', include('Purchases.urls')),
+    url(r'^Branches/', include('Branches.urls')),
+
 ]
 
 if settings.DEBUG:

@@ -42,6 +42,12 @@ class Clients(models.Model):
     discount_perc = models.IntegerField(max_length=3, blank=False, default=0)
 
 
+<<<<<<< HEAD
+=======
+class Medicine_DB(models.Model):
+    int_barcode = models.IntegerField()
+
+>>>>>>> e689dbcb92eb2de7d5de0ea435196dd6e76112b6
 
 
 
