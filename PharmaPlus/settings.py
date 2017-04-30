@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'Purchases.apps.PurchasesConfig',
     'Mony_Transactions.apps.MonyTransactionsConfig',
     'Expenses.apps.ExpensesConfig',
+    'Accounts.apps.AccountsConfig',
+    'Branches.apps.BranchesConfig',
 ]
 
 MIDDLEWARE = [
