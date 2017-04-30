@@ -37,14 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Core',
-    'Sales',
-    'Delivery',
-    'Accounts',
-    'System_Setting',
-    'Stock',
-    'Purchases',
-    'Branches'
+    'Core.apps.CoreConfig',
+    'Sales.apps.SalesConfig',
+    'Delivery.apps.DeliveryConfig',
+    'System_Setting.apps.SystemSettingConfig',
+    'Stock.apps.StockConfig',
+    'Purchases.apps.PurchasesConfig',
+    'Mony_Transactions.apps.MonyTransactionsConfig',
+    'Expenses.apps.ExpensesConfig',
 ]
 
 MIDDLEWARE = [
@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'PharmaPlus.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pharmaplus',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
 
