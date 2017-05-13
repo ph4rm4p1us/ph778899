@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'Core/empty_base.html' %}
+{% block body %}
+
+    <div class="panel" style="overflow-y: auto;">
+        <div class="panel-body main_panel" style="overflow-y: auto;">
+            <form method="POST" data-target='#myModal2' target="_parent" id="salesForm" action="Add/?item={{ this_stock.id }}">
+                {% csrf_token %}
+                <table class="table table-responsive">
+                    <tr>
+                        <td class="col-lg-4">الصنف</td>
+                        <td class="col-lg-8">{{ this_stock.item }}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-4">الصلاحية</td>
+                        <td class="col-lg-8">{{ this_stock.expiration }}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-4">سعر الوحدة</td>
+                        <td class="col-lg-8">{{ this_stock.main_unit_price }}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-4">سعر الوحدة الوسطي</td>
+                        <td class="col-lg-8">{{ this_stock.med_unit_price }}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-4">الكمية المتاحة</td>
+                        <td class="col-lg-8">{{ this_stock.main_unit_stock }}:{{ this_stock.med_unit_stock }}</td>
+                    </tr>
+
+                    {% include 'Core/form_template.html' %}
+                </table>
+                <button class="btn btn-success" id="add"><span class="fa fa-plus"></span> إضافة</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        $(document).on('submit', '#salesForm', function (e) {
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: $(this).serialize(),
+            });
+            e.preventDefault();
+            $('#myModal3').toggle();
+            location.reload();
+        });
+    </script>
+{% endblock %}

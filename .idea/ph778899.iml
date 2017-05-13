@@ -20,6 +20,7 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/Core/templates" />
+        <option value="$MODULE_DIR$/Delivery/templates" />
       </list>
     </option>
   </component>

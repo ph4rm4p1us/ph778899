@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     <link href='{% static "bootstrap/css/bootstrap.min.css" %}' rel="stylesheet">
     <link href='{% static "bootstrap/css/style.css" %}' rel="stylesheet">
+    <link href='{% static "plugins/select2/select2.css" %}' rel="stylesheet">
     <link rel="stylesheet" href='{% static "font_awesome/css/font-awesome.min.css" %}'>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -277,7 +278,7 @@
                     <ul class="dropdown-menu">
                         <li>الرصيد الحالي:1000000 جنيه</li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#" class="btn btn-primary">تسجيل خروج</a></li>
+                        <li><a href="{% url 'Core:logout_user' %}"><i class="fa fa-power-off"></i> تسجيل خروج</a></li>
                     </ul>
                 </li>
             </ul>
@@ -349,10 +350,6 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 
-    $(function () {
-        //Initialize Select2 Elements
-        $(".select2").select2();
-    });
 </script>
 </center>
 </body>

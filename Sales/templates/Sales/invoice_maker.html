@@ -1,10 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="modal fade" role="dialog" id="myModal3">
+        <div class="modal-dialog">
+            <div class="modal-header bg-pharma-blue">
+                إضافة منتج إلي الفاتورة
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:white;">&times;
+                </button>
+
+            </div>
+            <div class="modal-body bg-pharma-green" id="myModal2">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+                <div class="row">
+                    <a href="{% url 'Sales:edit_invoice' perv_invoice.id %}"
+                       class="btn bg-orange col-lg-2 col-md-3 col-xs-12">
+                        <span class="fa fa-arrow-circle-o-right"></span>
+                        الفاتورة السابقة
+                    </a>
+                    <div class="col-lg-8 col-md-6 col-xs-12">
+                        فاتورة مبيعات رقم : {{ this_invoice.id }}
+                    </div>
+                    <a href="{% url 'Sales:edit_invoice' next_invoice.id %}"
+                       class="btn bg-orange col-lg-2 col-md-3 col-xs-12">
+                        الفاتورة التالية
+                        <span class="fa fa-arrow-circle-o-left"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body main_panel" style="overflow-y: auto;">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <table class="table table-responsive table-bordered">
+                            <thead>
+                            <tr>
+                                <td class="bg-success">الصنف</td>
+                                <td class="bg-success">عدد:وحدة</td>
+                                <td class="bg-success">السعر</td>
+                                <td class="bg-success">الإجمالي</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for invoice_item in this_invoice_items %}
+                                <tr>
+                                    <td>{{ invoice_item.item.item.commercial_name }}</td>
+                                    <td>
+                                        {{ invoice_item.main_unit_quantity }} : {{ invoice_item.med_unit_quantity }}
+                                    </td>
+                                    <td>
+                                        {{ invoice_item.main_unit_price }} : {{ invoice_item.med_unit_price }}
+                                    </td>
+                                    <td>{{ invoice_item.total_price }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td class="bg-success">الإجمالي</td>
+                                <td class="bg-success"></td>
+                                <td class="bg-success"></td>
+                                <td class="bg-success">{{ this_invoice_total }}</td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <form class="form-horizontal col-lg-6 col-md-6" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>بحث عن دواء</label>
+                            <select name="item" class="select2" style="width: 100%;" id="med"
+                                    onchange="search()">
+                                <option class="selected">بحث عن دواء</option>
+                                {% for x in all_items %}
+                                    <option value="{{ x.id }}"
+                                            {% if x.main_unit_stock == 0 %}
+                                            class="bg-danger"
+                                            {% endif %}
+                                    >
+                                        {{ x.barcode }}
+                                        {{ x.commercial_name }} ||
+                                        {{ x.type }} ||
+                                        {{ x.arabic_name }} ||
+                                        {{ x.generic_name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <select name="stock" class="form-control" style="display: none;" id="stock">
+
+                            </select>
+
+                        </div>
+                    </form>
+
+                    <button class="btn btn-success" onclick="add_Item()" id="addBtn"
+                            style="display: none;"><span
+                            class="fa fa-plus"></span>
+                        إضافة
+                    </button>
+                    <button class="btn btn-info" onclick="refresh()" id="#refresh"><span
+                            class="fa fa-refresh"></span>
+                        تحديث
+                    </button>
+
+                </div>
+                <div class="row center">
+                    <button class="btn btn-success">كشف تفاعلات الأدوية</button>
+                    <button class="btn btn-success">دفع الفاتورة</button>
+                    <button class="btn btn-primary">طباعة الجرعات</button>
+                    <button class="btn btn-warning">حفظ الفاتورة</button>
+                    <button class="btn btn-danger">إلغاء الفاتورة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('document').ready(function () {
+            $('#addBtn').hide();
+            $('#stock').hide();
+            $(".select2").select2();
+        });
+        function add_Item() {
+            var myModal = $('#myModal2');
+            $('#myModal3').modal('show');
+            myModal.load(window.location.origin + '{% url 'Sales:add_item' this_invoice.id %}' + '?item=' + $('#stock').val());
+        }
+        function search() {
+            var addBtn = $('#addBtn');
+            var searchBtn = $('#searchBtn');
+            var stock = $('#stock');
+            var product_id = $('#med').val();
+            addBtn.show();
+            stock.show();
+            stock.load(window.location.origin + '/Stock/get_stock/' + product_id + '/');
+        }
+        function refresh() {
+            location.reload();
+        }
+    </script>
+{% endblock %}
