@@ -36,7 +36,7 @@ $shortcut-height: 45px;
   border: none;
   border-radius: 0px;
   width: 100%;
-  a{
+  .tab-button{
       color:#ffffff !important;
   }
 
@@ -117,7 +117,7 @@ $shortcut-height: 45px;
 
 
 .cus-active {
-  @extend .dropdown-links;
+  //@extend .dropdown-links;
   @extend .nav-link1;
   background-color: $dark-blue;
 }
@@ -132,10 +132,24 @@ $shortcut-height: 45px;
   border-bottom: 3px solid $header-background * 1.2 !important;
   color: #ffffff !important;
 }
+.dropdown-links{
+ // background-color: red;
+  font-size: 17px;
+  .notification{
+    color:#3B5998 !important;
+  }
 
-.dropdown-links:hover, .dropdown-links:focus, .dropdown-links:after, .dropdown-links:active {
-  background-color: $dark-blue;
 }
+.dropdown-links:hover, .dropdown-links:after, .dropdown-links:active, .dropdown-links:focus{
+  background-color: $header-background !important;
+  }
+
+
+.notification:hover, .notification:focus, .notification:after, .notification:active{
+  color:#ffffff !important;
+  background-color: $header-background !important;
+}
+
 
 
 

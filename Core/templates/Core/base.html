@@ -41,13 +41,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="cus-div collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="cus-active cus-li"><a class="nav-link1" href="{% url 'Core:index' %}">الرئيسية <span class="sr-only">(current)</span></a>
+                <li class="cus-active cus-li"><a class="tab-button" href="{% url 'Core:index' %}">الرئيسية <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="cus-li"><a class="" href="#">مجتمع الصيادلة</a></li>
+                <li class="cus-li"><a class="tab-button" href="#">مجتمع الصيادلة</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown dropdown-links">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a href="#" class="dropdown-toggle notification" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false"> <span class="fa fa-globe"></span></a>
                     <ul class="dropdown-menu">
                         <li class="center">تحديثات الأسعار</li>
@@ -58,8 +58,8 @@
                     </ul>
                 </li>
                 <li class="dropdown dropdown-links">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false"><span class="fa fa-minus"></span></a>
+                    <a href="#" class="dropdown-toggle notification" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"><span class="fa fa-minus-circle"></span></a>
                     <ul class="dropdown-menu">
                         <li class="center">النواقص</li>
                         <li role="separator" class="divider"></li>
@@ -70,7 +70,7 @@
                     </ul>
                 </li>
                 <li class="dropdown dropdown-links">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a href="#" class="dropdown-toggle notification" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false"> <span class="fa fa-calendar-minus-o"></span></a>
                     <ul class="dropdown-menu">
                         <li class="center">الصلاحية</li>
@@ -279,8 +279,8 @@
 
                     </ul>
                 </li>
-                <li class="dropdown dropdown-links">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle tab-button" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">اسم المستخدم <span class="fa fa-user-circle"></span></a>
                     <ul class="dropdown-menu">
                         <li>الرصيد الحالي:1000000 جنيه</li>
