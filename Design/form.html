@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>.::: PharmaPlus :::.</title>
+
+    <!-- Bootstrap -->
+    <link href="inc/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="inc/bootstrap/css/style.css" rel="stylesheet">
+    <link href="inc/plugins/select2/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="inc/font_awesome/css/font-awesome.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+</head>
+<body style="direction: rtl;">
+<c
+<div class="panel col-lg-6 col-md-6 transparent center">
+    <div class="panel-heading bg-pharma-blue">
+        الفورمة
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal">
+            تكست بوكس
+
+            <div class="col fixed" dir="rtl">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                    <input type="text" class="form-control" placeholder="اسم المستخدم" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            سليكت بوكس
+            <select name="select_box" class="form-control">
+                <option value="1">رقم1</option>
+                <option value="2">رقم2</option>
+            </select>
+            تشيك بوكس
+            <label>
+                <input type="checkbox" value="1">
+                اوبشن1
+            </label>
+            <label>
+                <input type="checkbox" value="1">
+                اوبشن2
+            </label>
+            <div class="form-group">
+                <label>بحث عن دواء</label>
+                <select class="form-control select2" style="width: 100%;">
+                    <option selected="selected">Uvamine Retard || Nothing || يوفامين ريتارد</option>
+                    <option>Tramadol || Drug || ترامادول</option>
+                    <option>Tamol || Drug || تامول</option>
+                    <option>Flumox || Antibiotic || فلوموكس</option>
+                    <option>Panadol || Antiflamitory || بنادول</option>
+                    <option>Stripsels || Antiflamitory || ستريبسلز</option>
+                    <option>Folic Acid || Fixing || فوليك اسيد</option>
+                </select>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="inc/bootstrap/js/jquery-3.2.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="inc/bootstrap/js/bootstrap.min.js"></script>
+<script src="inc/plugins/select2/select2.full.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    $(function () {
+        //Initialize Select2 Elements
+        $(".select2").select2();
+    });
+</script>
+</center>
+</body>
+</html>

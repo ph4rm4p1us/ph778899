@@ -1,0 +1,31 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="col-lg-11 col-xs-10">
+        <div class="mainmenu">
+            <a href="{% url 'Sales:new_invoice' %}" class="menuitem">
+                <div class="icon">
+                    <i class="fa fa-list-alt"></i>
+                </div>
+                <div class="text">
+                    فاتورة مبيعات
+                </div>
+            </a>
+            <a href="#" class="menuitem">
+                <div class="icon">
+                    <i class="fa fa-undo"></i>
+                </div>
+                <div class="text">
+                    مرتجع مبيعات
+                </div>
+            </a>
+            <a href="#" class="menuitem">
+                <div class="icon">
+                    <i class="fa fa-line-chart"></i>
+                </div>
+                <div class="text">
+تقارير المبيعات
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

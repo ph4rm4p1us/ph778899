@@ -1,0 +1,16 @@
+{% if error_message %}
+    <div class="alert alert-danger"><p><strong>{{ error_message }}</strong></p></div>
+{% endif %}
+{% for field in form %}
+    <tr>
+        <td>
+            {{ field.label }}
+        </td>
+        <td>
+            <div class="form-group">
+                <span class="text-danger small">{{ field.errors }}</span>
+                {{ field }}
+            </div>
+        </td>
+    </tr>
+{% endfor %}

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{% block title %}.::: PharmaPlus :::.{% endblock %}</title>
+    {% load staticfiles %}
+    <!-- Bootstrap -->
+    <link type="text/css" href='{% static "bootstrap/css/bootstrap.css" %}' rel="stylesheet">
+    <link type="text/css" href='{% static "bootstrap/css/bootstrap.min.css" %}' rel="stylesheet">
+    <link type="text/css" href='{% static "bootstrap/css/style.css" %}' rel="stylesheet">
+    <link type="text/css" href='{% static "custom-style.css" %}' rel="stylesheet">
+    <link type="text/css" href='{% static "font_awesome/css/font-awesome.min.css" %}' rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+</head>
+<body class="body-background">
+<nav class="custom-navbar navbar navbar-inverse ">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'Core:index' %}"><img alt="Pharma+"
+                                                                       src='{% static "img/pharma+.png" %}'
+                                                                       width="70px;" height="70px;"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="cus-div collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="cus-active cus-li"><a class="nav-link1" href="{% url 'Core:index' %}">الرئيسية <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="cus-li"><a class="" href="#">مجتمع الصيادلة</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropdown-links">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"> <span class="fa fa-globe"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="center">تحديثات الأسعار</li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown dropdown-links">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"><span class="fa fa-minus"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="center">النواقص</li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown dropdown-links">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"> <span class="fa fa-calendar-minus-o"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="center">الصلاحية</li>
+                        <li role="separator" class="divider"></li>
+                        <table class="table table-responsive">
+                            <thead>
+                            <tr>
+                                <td>
+                                    المنتج
+                                </td>
+                                <td>
+                                    الصلاحية
+                                </td>
+                                <td>
+                                    الكمية
+                                </td>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr class="btn-warning">
+
+                                <td>
+                                    <a href="">
+                                        منتج1
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-08-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+                            </tr>
+                            <tr class="btn-warning">
+                                <td>
+                                    <a href="">
+                                        منتج2
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+
+                            </tr>
+                            <tr class="btn-danger">
+                                <td>
+                                    <a href="">
+                                        منتج3
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+
+                            </tr>
+                            <tr class="btn-danger">
+                                <td>
+                                    <a href="">
+                                        منتج3
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+
+                            </tr>
+                            <tr class="btn-danger">
+                                <td>
+                                    <a href="">
+                                        منتج3
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+
+                            </tr>
+                            <tr class="btn-danger">
+                                <td>
+                                    <a href="">
+                                        منتج3
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+
+                            </tr>
+                            <tr class="btn-danger">
+                                <td>
+                                    <a href="">
+                                        منتج3
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+
+                            </tr>
+                            <tr class="btn-danger">
+                                <td>
+                                    <a href="">
+                                        منتج3
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+
+                            </tr>
+                            <tr class="btn-danger">
+                                <td>
+                                    <a href="">
+                                        منتج3
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+
+                            </tr>
+                            <tr class="btn-danger">
+                                <td>
+                                    <a href="">
+                                        منتج3
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+
+                            </tr>
+                            <tr class="btn-danger">
+                                <td>
+                                    <a href="">
+                                        منتج3
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+
+                            </tr>
+                            <tr class="btn-danger">
+                                <td>
+                                    <a href="">
+                                        منتج3
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    10
+                                </td>
+
+                            </tr>
+                            <tr class="btn-danger">
+                                <td>
+                                    <a href="">
+                                        منتج3اللي مش عارف اسمه ايه .. فكر معايا كده :D ايه يا كابتن ما تفكر ولا انت قاعد
+                                        كده زيك زي قلتك
+                                    </a>
+                                </td>
+                                <td>
+                                    2017-09-01
+                                </td>
+                                <td>
+                                    100
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </ul>
+                </li>
+                <li class="dropdown dropdown-links">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">اسم المستخدم <span class="fa fa-user-circle"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>الرصيد الحالي:1000000 جنيه</li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" class="btn btn-primary">تسجيل خروج</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container text-center container-cus">
+
+    <div class="col-lg-11 col-xs-10 margin-top">
+            {% block body %}
+
+            {% endblock %}
+    </div>
+    <div class="col-lg-1 col-xs-2 vertical">
+        <div class="">
+            <div>
+                <a class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="فاتورة مبيعات">
+                <i class="icon-conf fa fa-list-alt"></i>
+            </a>
+            </div>
+            <div>
+                <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="مرتجع مبيعات">
+                    <i class="icon-conf fa fa-arrow-circle-o-left"></i></a>
+
+            </div>
+            <div>
+                <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="بحث عن صنف">
+                    <i class="icon-conf fa fa-search-minus"></i></a>
+
+            </div>
+             <div>
+                <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="مصروفات">
+                    <i class="icon-conf fa fa-money"></i></a>
+
+            </div>
+
+             <div class="padding">
+                <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="مصروفات">
+                    <i class="icon-conf fa fa-list-alt"></i></a>
+
+            </div>
+             <div>
+                <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="الدعم الفني">
+                    <i class="icon-conf fa fa-life-ring"></i></a>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<a href="http://www.onlink4it.com/" target="_blank">
+    <div class="footer">
+        جميع الحقوق محفوظة لشركة اون لينك
+    </div>
+</a>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src='{% static "bootstrap/js/jquery-3.2.1.min.js" %}'></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src='{% static "bootstrap/js/bootstrap.min.js" %}'></script>
+<script src='{% static "plugins/select2/select2.full.min.js" %}'></script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    $(function () {
+        //Initialize Select2 Elements
+        $(".select2").select2();
+    });
+</script>
+</center>
+</body>
+</html>

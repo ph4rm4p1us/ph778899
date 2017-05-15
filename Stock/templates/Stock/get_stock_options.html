@@ -1,0 +1,3 @@
+{% for x in stock %}
+<option value="{{ x.id }}">تاريخ الصلاحية : {{ x.expiration }} || الكمية : {{ x.main_unit_stock }}</option>
+{% endfor %}

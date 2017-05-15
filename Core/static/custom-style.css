@@ -1,0 +1,98 @@
+.page-items {
+  text-align: center;
+  overflow: hidden;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background-color: #0a87fc;
+  color: white;
+  margin: 20px;
+  border-radius: 10%; }
+
+.page-items:hover, .page-items:active, .page-items:after, .page-items:focus {
+  background-color: #000000; }
+
+.margin-top {
+  margin-top: 45px; }
+
+.container-cus {
+  width: 100%;
+  margin: 0; }
+
+.custom-navbar {
+  background-color: #2196F3;
+  border: none;
+  border-radius: 0px;
+  width: 100%; }
+  .custom-navbar a {
+    color: #ffffff !important; }
+
+.body-background {
+  margin: 0;
+  background-color: #f5f9fa; }
+
+.shortcut-menu {
+  text-align: center;
+  height: 100%;
+  max-height: 100%;
+  position: relative;
+  vertical-align: middle;
+  display: inline-block; }
+  .shortcut-menu .vcenter {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    height: 100%;
+    width: 50%; }
+
+.vertical {
+  min-height: 85%;
+  /* Fallback for browsers do NOT support vh unit */
+  min-height: 85vh;
+  /* These two lines are counted as one :-)       */
+  position: fixed;
+  display: flex;
+  align-items: center; }
+
+.shortcut_item {
+  margin: 0 0 30px 0;
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  background-color: #2196F3;
+  border-radius: 999px;
+  border: 0 solid #ffffff;
+  font-family: arabic;
+  height: 45px;
+  width: 45px;
+  color: #ffffff;
+  line-height: 50px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  .shortcut_item .icon-conf {
+    position: absolute;
+    text-align: center;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25px; }
+
+.shortcut_item:hover, .shortcut_item:active, .shortcut_item:focus, .shortcut_item:after {
+  background-color: #15609b; }
+
+.cus-active, .cus-div .cus-li:hover, .cus-div .cus-li:active, .cus-div .cus-li:after, .cus-div .cus-li:focus {
+  background-color: #1a78c2; }
+
+.nav-link1, .cus-active, .cus-div .cus-li:hover, .cus-div .cus-li:active, .cus-div .cus-li:after, .cus-div .cus-li:focus {
+  height: 50px;
+  border-bottom: 3px solid #28b4ff !important;
+  color: #ffffff !important; }
+
+.dropdown-links:hover, .cus-active:hover, .cus-div .cus-li:hover, .cus-div .cus-li:hover:after, .dropdown-links:focus, .cus-active:focus, .cus-div .cus-li:focus:after, .cus-div .cus-li:focus, .dropdown-links:after, .cus-active:after, .cus-div .cus-li:hover:after, .cus-div .cus-li:active:after, .cus-div .cus-li:after, .cus-div .cus-li:focus:after, .dropdown-links:active, .cus-active:active, .cus-div .cus-li:active, .cus-div .cus-li:active:after {
+  background-color: #1a78c2; }
+
+/*# sourceMappingURL=custom-style.css.map */
