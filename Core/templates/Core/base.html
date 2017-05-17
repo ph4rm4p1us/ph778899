@@ -9,7 +9,6 @@
     {% load staticfiles %}
     <!-- Bootstrap -->
     <link type="text/css" href='{% static "bootstrap/css/bootstrap.css" %}' rel="stylesheet">
-    <link type="text/css" href='{% static "bootstrap/css/bootstrap.min.css" %}' rel="stylesheet">
     <link type="text/css" href='{% static "bootstrap/css/style.css" %}' rel="stylesheet">
     <link type="text/css" href='{% static "custom-style.css" %}' rel="stylesheet">
     <link type="text/css" href='{% static "font_awesome/css/font-awesome.min.css" %}' rel="stylesheet">
@@ -22,7 +21,7 @@
 	    <![endif]-->
 </head>
 <body class="body-background">
-<nav class="custom-navbar navbar navbar-inverse ">
+<nav class="custom-navbar navbar-inverse  ">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -41,13 +40,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="cus-div collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="cus-active cus-li"><a class="tab-button" href="{% url 'Core:index' %}">الرئيسية <span class="sr-only">(current)</span></a>
+                <li class="cus-active cus-li"><a class="tab-button" href="{% url 'Core:index' %}">الرئيسية <span
+                        class="sr-only">(current)</span></a>
                 </li>
                 <li class="cus-li"><a class="tab-button" href="#">مجتمع الصيادلة</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown dropdown-links">
-                    <a href="#" class="dropdown-toggle notification" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a href="#" class="dropdown-toggle notification" data-toggle="dropdown" role="button"
+                       aria-haspopup="true"
                        aria-expanded="false"> <span class="fa fa-globe"></span></a>
                     <ul class="dropdown-menu">
                         <li class="center">تحديثات الأسعار</li>
@@ -58,7 +59,8 @@
                     </ul>
                 </li>
                 <li class="dropdown dropdown-links">
-                    <a href="#" class="dropdown-toggle notification" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a href="#" class="dropdown-toggle notification" data-toggle="dropdown" role="button"
+                       aria-haspopup="true"
                        aria-expanded="false"><span class="fa fa-minus-circle"></span></a>
                     <ul class="dropdown-menu">
                         <li class="center">النواقص</li>
@@ -70,7 +72,8 @@
                     </ul>
                 </li>
                 <li class="dropdown dropdown-links">
-                    <a href="#" class="dropdown-toggle notification" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a href="#" class="dropdown-toggle notification" data-toggle="dropdown" role="button"
+                       aria-haspopup="true"
                        aria-expanded="false"> <span class="fa fa-calendar-minus-o"></span></a>
                     <ul class="dropdown-menu">
                         <li class="center">الصلاحية</li>
@@ -279,8 +282,9 @@
 
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle tab-button" data-toggle="dropdown" role="button" aria-haspopup="true"
+                <li class="dropdown user-tab">
+                    <a href="#" class="dropdown-toggle tab-button" data-toggle="dropdown" role="button"
+                       aria-haspopup="true"
                        aria-expanded="false">اسم المستخدم <span class="fa fa-user-circle"></span></a>
                     <ul class="dropdown-menu">
                         <li>الرصيد الحالي:1000000 جنيه</li>
@@ -292,58 +296,143 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+<div class="container-fluid  container-cus">
+<div class="entire-items">
+        <div class="row text-center first-row">
+            <div class="col-md-3 col-xs-2 page-items">
+                <a href="{% url 'Sales:index' %}" class="">
+                    <div class="icon">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <div class="text">
+                        <p>المبيعات</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-xs-2 page-items">
+                <a href='{% url 'Delivery:index' %}' class=" ">
+                    <div class="icon">
+                        <i class="fa fa-motorcycle"></i>
+                    </div>
+                    <div class="text">
+                        <p>الدليفري</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-xs-2 page-items">
+                <a href="{% url 'Accounts:index' %}" class="">
+                    <div class="icon">
+                        <i class="fa fa-book"></i>
+                    </div>
+                    <div class="text">
+                        <p> الحسابات</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-xs-2 page-items">
+                <a href="{% url 'System_Setting:index' %}" class=" ">
+                    <div class="icon">
+                        <i class="fa fa-gear"></i>
+                    </div>
+                    <div class="text">
+                        <p> إدارة البرنامج</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row text-center center-block center second-row">
+            <div class="col-md-3 col-xs-2 page-items">
+                <a href="{% url 'Stock:index' %}" class="">
+                    <div class="icon">
+                        <i class="fa fa-barcode"></i>
+                    </div>
+                    <div class="text">
+                        <p> المخزون</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-xs-2 page-items">
+                <a href="{% url 'Purchases:index' %}" class="">
+                    <div class="icon">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="text">
+                        <p>المشتريات</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-xs-2 page-items">
+                <a href="{% url 'Branches:index' %}" class=" ">
+                    <div class="icon">
+                        <i class="fa fa-bank"></i>
+                    </div>
+                    <div class="text">
+                        <p>الفروع</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-xs-2 page-items">
+                <a href="#" class=" ">
+                    <div class="icon">
+                        <i class="fa fa-list-alt"></i>
+                    </div>
+                    <div class="text">
+                        <p>التقارير</p>
+                    </div>
+                </a>
+            </div>
 
-<div class="container text-center container-cus">
-
-    <div class="col-lg-11 col-xs-10 margin-top">
-            {% block body %}
-
-            {% endblock %}
+        </div>
+</div>
+    <div class="row">
+        <footer class=" navbar-fixed-bottom">
+    <div class=" cus-footer container-fluid">
+        <a class="" href="#" target="_blank">
+            <p>جميع الحقوق محفوظة pharmaplus &copy;</p>
+        </a>
     </div>
-    <div class="col-lg-1 col-xs-2 vertical">
-        <div class="">
-            <div>
-                <a class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="فاتورة مبيعات">
+</footer>
+    </div>
+   <div class="vertical ">
+    <div class="">
+        <div>
+            <a class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="فاتورة مبيعات">
                 <i class="icon-conf fa fa-list-alt"></i>
             </a>
-            </div>
-            <div>
-                <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="مرتجع مبيعات">
-                    <i class="icon-conf fa fa-arrow-circle-o-left"></i></a>
+        </div>
+        <div>
+            <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="مرتجع مبيعات">
+                <i class="icon-conf fa fa-arrow-circle-o-left"></i></a>
 
-            </div>
-            <div>
-                <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="بحث عن صنف">
-                    <i class="icon-conf fa fa-search-minus"></i></a>
+        </div>
+        <div>
+            <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="بحث عن صنف">
+                <i class="icon-conf fa fa-search-minus"></i></a>
 
-            </div>
-             <div>
-                <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="مصروفات">
-                    <i class="icon-conf fa fa-money"></i></a>
+        </div>
+        <div>
+            <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="مصروفات">
+                <i class="icon-conf fa fa-money"></i></a>
 
-            </div>
+        </div>
 
-             <div class="padding">
-                <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="مصروفات">
-                    <i class="icon-conf fa fa-list-alt"></i></a>
+        <div class="padding">
+            <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="مصروفات">
+                <i class="icon-conf fa fa-list-alt"></i></a>
 
-            </div>
-             <div>
-                <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="الدعم الفني">
-                    <i class="icon-conf fa fa-life-ring"></i></a>
-
-            </div>
-
+        </div>
+        <div>
+            <a href="#" class="shortcut_item" data-toggle="tooltip" data-placement="bottom" title="الدعم الفني">
+                <i class="icon-conf fa fa-life-ring"></i></a>
 
         </div>
     </div>
+</div>
 
 </div>
-<a href="http://www.onlink4it.com/" target="_blank">
-    <div class="footer">
-        جميع الحقوق محفوظة لشركة اون لينك
-    </div>
-</a>
+
+
+</body>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src='{% static "bootstrap/js/jquery-3.2.1.min.js" %}'></script>
@@ -361,5 +450,5 @@
     });
 </script>
 </center>
-</body>
+
 </html>

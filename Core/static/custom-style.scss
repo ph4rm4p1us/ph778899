@@ -1,26 +1,33 @@
-//$header-background:#314792;
-//$header-background:#93B874;
-//$header-background:#3498db;
-//$header-background:#03A9F4;
-$header-background: #2196F3 /*#0a87fc*/;
+
+$header-background: /*#2196F3*/#00C2D9 /*#0a87fc*/;
 $dark-blue: $header-background * 0.8;
-$body-background: #f5f9fa;
+$body-background: /*#EAEAEA;*/#EEEFEF!important;;
 $shortcut-width: 45px;
 $shortcut-height: 45px;
+
 .page-items{
      text-align: center;
-    overflow: hidden;
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    background-color: #0a87fc;
-    color: white;
-   // border: 3px solid white;
-    margin: 20px;
-    border-radius: 10%;
+   // overflow: hidden;
+    //display: inline-block;
+   // width: 300px;
+    //height: 300px;
+ // background-color: #222222;
+
+  i,p{
+        color: $header-background !important;
+
+  }
+}
+.white{
+  color: #ffffff !important;
 }
 .page-items:hover, .page-items:active, .page-items:after, .page-items:focus{
-  background-color: #000000;
+  background-color: $header-background;
+      color: #ffffff !important;
+
+  i{
+    color: white !important;
+  }
 }
 .margin-top{
   margin-top: 45px;
@@ -28,24 +35,73 @@ $shortcut-height: 45px;
 
 
 .container-cus{
-  width:100%;
-  margin:0;
+  width:100% !important;
+  margin:0 !important;
+  padding: 0 !important;
+  height: 100% !important;
+  overflow-y:auto ;
+  //position: relative;
+
 }
 .custom-navbar {
   background-color: $header-background;
   border: none;
   border-radius: 0px;
   width: 100%;
+  padding-bottom: 0;
   .tab-button{
       color:#ffffff !important;
   }
-
   // color:#ffffff;
 }
+html, body{
+  height: 100%;
+}
+.vertical{
+  min-height: 85%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 85vh; /* These two lines are counted as one :-)       */
+  position: fixed;
+  display: flex;
+  right:20px;
+  top:70px;
+  align-items: center;
+  z-index: 5;
 
+}
+
+.entire-items{
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.first-row{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: auto;
+  right: auto;
+  height: 50% !important;
+  overflow-y: auto;
+  //background-color: #3c763d;
+
+}
+.second-row{
+  height: 50% !important;
+    background-color: #EAEAEA!important;
+  width: 100%;
+  overflow-y:auto ;
+ // margin: 0;
+  padding-bottom: 0;
+  bottom: 0;
+  margin-bottom:0 ;
+}
 .body-background {
   margin: 0;
   background-color: $body-background;
+
+  height: 100%;
 }
 .shortcut-menu{
    // position:fixed;
@@ -70,14 +126,7 @@ $shortcut-height: 45px;
   }
 
 }
-.vertical{
-  min-height: 85%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 85vh; /* These two lines are counted as one :-)       */
-  position: fixed;
-  display: flex;
-  align-items: center;
 
-}
 
 
 .shortcut_item {
@@ -109,7 +158,7 @@ $shortcut-height: 45px;
 
   }
 }
-.shortcut_item:hover, .shortcut_item:active, .shortcut_item:focus, .shortcut_item:after{
+.shortcut_item:hover, .shortcut_item:active, .shortcut_item:focus, .shortcut_item:after, .shortcut_item:target{
  // @extend .shortcut_item;
   background-color: $dark-blue * 0.8;
 }
@@ -126,6 +175,16 @@ $shortcut-height: 45px;
   @extend .cus-active;
 
 }
+.user-tab{
+  background-color: $header-background;
+}
+.user-tab:hover, .user-tab:active, .user-tab:focus, .user-tab:after, .user-tab:target{
+   background-color: $dark-blue;
+  a:target{
+    background-color: $dark-blue;
+  }
+
+}
 
 .nav-link1 {
   height: 50px;
@@ -136,18 +195,49 @@ $shortcut-height: 45px;
  // background-color: red;
   font-size: 17px;
   .notification{
-    color:#3B5998 !important;
+    color:/*#3B5998*/ $header-background * 0.6 !important;
   }
 
 }
-.dropdown-links:hover, .dropdown-links:after, .dropdown-links:active, .dropdown-links:focus{
+.dropdown-links:hover, .dropdown-links:after, .dropdown-links:active, .dropdown-links:focus, .dropdown-links:target{
   background-color: $header-background !important;
   }
 
 
-.notification:hover, .notification:focus, .notification:after, .notification:active{
+.notification:hover, .notification:focus, .notification:after, .notification:active, .notification:target{
   color:#ffffff !important;
   background-color: $header-background !important;
+}
+.cus-footer{
+   // text-align: center;
+  //  align-content: left;
+    //position:absolute;
+   // alignment: left;
+  position: relative;
+    float: left;
+    width: 300px;
+    height: 30px;
+    background-color: $header-background;
+    border-radius:0 15px 0 0 ;
+    border: 0px solid white;
+    color: #ffffff;
+    //bottom: 0;
+
+     p{
+         position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 70%;
+    height: 50%;
+    margin: auto;
+     text-align: center;
+
+     }
+}
+.cus-footer:hover{
+  background-color: $dark-blue;
 }
 
 
