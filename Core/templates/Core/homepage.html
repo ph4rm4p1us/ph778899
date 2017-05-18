@@ -1,86 +1,84 @@
 {% extends 'Core/base.html' %}
 {% block body %}
-<!--
-        <div class="cl-lg-4 col-xs-2">
-            <a href="{% url 'Sales:index' %}" class="">
-                <div class="icon">
-                    <i class="fa fa-search"></i>
-                </div>
-                <div class="text">
-                    المبيعات
-                </div>
-            </a>
-        </div>
-        <div class="cl-lg-4 col-xs-2">
-            <a href='{% url 'Delivery:index' %}' class=" bg-orange">
-                <div class="icon">
-                    <i class="fa fa-motorcycle"></i>
-                </div>
-                <div class="text">
-                    الدليفري
-                </div>
-            </a>
-        </div>
-        <div class="cl-lg-2 col-xs-2">
-            <a href="{% url 'Accounts:index' %}" class=" bg-green">
-                <div class="icon">
-                    <i class="fa fa-book"></i>
-                </div>
-                <div class="text">
-                    الحسابات
-                </div>
-            </a>
-        </div>
-        <div class="cl-lg-4 col-xs-2">
-            <a href="{% url 'System_Setting:index' %}" class=" bg-red">
-                <div class="icon">
-                    <i class="fa fa-gear"></i>
-                </div>
-                <div class="text">
-                    إدارة البرنامج
-                </div>
-            </a>
-        </div>
-    <div class="cl-lg-4 col-xs-2">
-        <a href="{% url 'Stock:index' %}" class="bg-purple">
-            <div class="icon">
-                <i class="fa fa-barcode"></i>
+  <div class="col-md-3 col-xs-12 li-box">
+                <a href="{% url 'Sales:index' %}" class="">
+                    <div class="icon">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <div class="text">
+                        <p>المبيعات</p>
+                    </div>
+                </a>
             </div>
-            <div class="text">
-                المخزون
+            <div class="col-md-3 col-xs-12 li-box">
+                <a href='{% url 'Delivery:index' %}' class=" ">
+                    <div class="icon">
+                        <i class="fa fa-motorcycle"></i>
+                    </div>
+                    <div class="text">
+                        <p>الدليفري</p>
+                    </div>
+                </a>
             </div>
-        </a>
-    </div>
-    <div class="cl-lg-4 col-xs-2">
-        <a href="{% url 'Purchases:index' %}" class=" bg-black">
-            <div class="icon">
-                <i class="fa fa-shopping-cart"></i>
+            <div class="col-md-3 col-xs-12 li-box">
+                <a href="{% url 'Accounts:index' %}" class="">
+                    <div class="icon">
+                        <i class="fa fa-book"></i>
+                    </div>
+                    <div class="text">
+                        <p> الحسابات</p>
+                    </div>
+                </a>
             </div>
-            <div class="text">
-                المشتريات
+            <div class="col-md-3 col-xs-12 li-box">
+                <a href="{% url 'System_Setting:index' %}" class=" ">
+                    <div class="icon">
+                        <i class="fa fa-gear"></i>
+                    </div>
+                    <div class="text">
+                        <p> إدارة البرنامج</p>
+                    </div>
+                </a>
             </div>
-        </a>
-    </div>
-    <div class="cl-lg-4 col-xs-2">
-        <a href="{% url 'Branches:index' %}" class=" bg-pharma-blue">
-            <div class="icon">
-                <i class="fa fa-bank"></i>
+            <div class="col-md-3 col-xs-12 li-box darker-icon">
+                <a href="{% url 'Stock:index' %}" class="">
+                    <div class="icon">
+                        <i class="fa fa-barcode"></i>
+                    </div>
+                    <div class="text">
+                        <p> المخزون</p>
+                    </div>
+                </a>
             </div>
-            <div class="text">
-                الفروع
+            <div class="col-md-3 col-xs-12 li-box darker-icon">
+                <a href="{% url 'Purchases:index' %}" class="">
+                    <div class="icon">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="text">
+                        <p>المشتريات</p>
+                    </div>
+                </a>
             </div>
-        </a>
-    </div>
-    <div class="cl-lg-4 col-xs-2">
-        <a href="#" class=" bg-darkred">
-            <div class="icon">
-                <i class="fa fa-list-alt"></i>
+            <div class="col-md-3 col-xs-12 li-box darker-icon">
+                <a href="{% url 'Branches:index' %}" class=" ">
+                    <div class="icon">
+                        <i class="fa fa-bank"></i>
+                    </div>
+                    <div class="text">
+                        <p>الفروع</p>
+                    </div>
+                </a>
             </div>
-            <div class="text">
-                التقارير
+            <div class="col-md-3 col-xs-12 li-box darker-icon">
+                <a href="#" class=" ">
+                    <div class="icon">
+                        <i class="fa fa-list-alt"></i>
+                    </div>
+                    <div class="text">
+                        <p>التقارير</p>
+                    </div>
+                </a>
             </div>
-        </a>
-    </div>
--->
 
 {% endblock %}

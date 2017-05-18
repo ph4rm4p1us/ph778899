@@ -15,13 +15,6 @@
 .margin-top {
   margin-top: 45px; }
 
-.container-cus {
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  height: 100% !important;
-  overflow-y: auto; }
-
 .custom-navbar {
   background-color: #00C2D9;
   border: none;
@@ -31,8 +24,8 @@
   .custom-navbar .tab-button {
     color: #ffffff !important; }
 
-html, body {
-  height: 100%; }
+body, ul, li {
+  height: 100% !important; }
 
 .vertical {
   min-height: 85%;
@@ -46,30 +39,78 @@ html, body {
   align-items: center;
   z-index: 5; }
 
-.entire-items {
+.container-cus {
+  align-content: stretch;
+  background-color: #EEEFEF !important;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   width: 100% !important;
-  height: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important; }
+  margin-left: 0 !important;
+  margin-right: 0 !important; }
+
+.li-box {
+  background-color: #EEEFEF !important;
+  cursor: pointer;
+  float: left;
+  position: relative;
+  padding: 26px 15px 26px 15px; }
+
+.li-box:hover, .li-box:focus, .li-box:active, .li-box:active, .li-box:target {
+  background-color: #00C2D9 !important; }
+  .li-box:hover .icon, .li-box:hover .text, .li-box:focus .icon, .li-box:focus .text, .li-box:active .icon, .li-box:active .text, .li-box:active .icon, .li-box:active .text, .li-box:target .icon, .li-box:target .text {
+    color: white; }
+
+.darker-icon {
+  background-color: #E8E8E8 !important; }
+
+.icon {
+  text-align: center;
+  overflow: hidden;
+  color: #00d5ef;
+  font-size: 150px;
+  padding-top: 0px;
+  font-family: arabic;
+  border: none; }
+
+.text {
+  text-align: center;
+  padding-top: 0px;
+  color: #00d5ef;
+  font-size: 25px;
+  font-family: arabic;
+  border: none; }
+
+.brand-custom {
+  position: relative;
+  display: inline-block;
+  top: 3px;
+  align-items: center;
+  z-index: 5; }
 
 .first-row {
   width: 100%;
+  height: 304px !important;
+  top: 0;
+  left: 0;
   margin: 0;
   padding: 0;
-  top: 0;
-  left: auto;
-  right: auto;
-  height: 50% !important;
-  overflow-y: auto; }
+  overflow-y: auto !important; }
 
 .second-row {
-  height: 50% !important;
-  background-color: #EAEAEA !important;
   width: 100%;
-  overflow-y: auto;
-  padding-bottom: 0;
+  height: 304px !important;
   bottom: 0;
-  margin-bottom: 0; }
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background-color: #EAEAEA !important;
+  overflow-y: auto; }
 
 .body-background {
   margin: 0;

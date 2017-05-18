@@ -101,27 +101,6 @@ div.shortcut_item {
 }
 
 
-div.icon {
-
-    text-align: center;
-    overflow: hidden;
-    color: white;
-    font-size: 100px;
-    padding-top: 0px;
-    font-family: arabic;
-    border: none;
-
-}
-
-div.text {
-
-    text-align: center;
-    padding-top: 0px;
-    color: white;
-    font-size: 20px;
-    font-family: arabic;
-    border: none;
-}
 
 a:link {
     color: white;

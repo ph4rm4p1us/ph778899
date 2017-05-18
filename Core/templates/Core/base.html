@@ -20,8 +20,8 @@
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 </head>
-<body class="body-background">
-<nav class="custom-navbar navbar-inverse  ">
+<body class="">
+<nav class="custom-navbar navbar-inverse ">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -32,7 +32,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'Core:index' %}"><img alt="Pharma+"
+            <a class="navbar-brand brand-custom" href="{% url 'Core:index' %}"><img alt="Pharma+"
                                                                        src='{% static "img/pharma+.png" %}'
                                                                        width="70px;" height="70px;"></a>
         </div>
@@ -296,103 +296,13 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div class="container-fluid  container-cus">
-<div class="entire-items">
-        <div class="row text-center first-row">
-            <div class="col-md-3 col-xs-2 page-items">
-                <a href="{% url 'Sales:index' %}" class="">
-                    <div class="icon">
-                        <i class="fa fa-search"></i>
-                    </div>
-                    <div class="text">
-                        <p>المبيعات</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-2 page-items">
-                <a href='{% url 'Delivery:index' %}' class=" ">
-                    <div class="icon">
-                        <i class="fa fa-motorcycle"></i>
-                    </div>
-                    <div class="text">
-                        <p>الدليفري</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-2 page-items">
-                <a href="{% url 'Accounts:index' %}" class="">
-                    <div class="icon">
-                        <i class="fa fa-book"></i>
-                    </div>
-                    <div class="text">
-                        <p> الحسابات</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-2 page-items">
-                <a href="{% url 'System_Setting:index' %}" class=" ">
-                    <div class="icon">
-                        <i class="fa fa-gear"></i>
-                    </div>
-                    <div class="text">
-                        <p> إدارة البرنامج</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row text-center center-block center second-row">
-            <div class="col-md-3 col-xs-2 page-items">
-                <a href="{% url 'Stock:index' %}" class="">
-                    <div class="icon">
-                        <i class="fa fa-barcode"></i>
-                    </div>
-                    <div class="text">
-                        <p> المخزون</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-2 page-items">
-                <a href="{% url 'Purchases:index' %}" class="">
-                    <div class="icon">
-                        <i class="fa fa-shopping-cart"></i>
-                    </div>
-                    <div class="text">
-                        <p>المشتريات</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-2 page-items">
-                <a href="{% url 'Branches:index' %}" class=" ">
-                    <div class="icon">
-                        <i class="fa fa-bank"></i>
-                    </div>
-                    <div class="text">
-                        <p>الفروع</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-2 page-items">
-                <a href="#" class=" ">
-                    <div class="icon">
-                        <i class="fa fa-list-alt"></i>
-                    </div>
-                    <div class="text">
-                        <p>التقارير</p>
-                    </div>
-                </a>
-            </div>
+<div class="container-cus">
+    {% block body %}
 
-        </div>
+    {% endblock %}
+
 </div>
-    <div class="row">
-        <footer class=" navbar-fixed-bottom">
-    <div class=" cus-footer container-fluid">
-        <a class="" href="#" target="_blank">
-            <p>جميع الحقوق محفوظة pharmaplus &copy;</p>
-        </a>
-    </div>
-</footer>
-    </div>
+
    <div class="vertical ">
     <div class="">
         <div>
@@ -429,8 +339,15 @@
     </div>
 </div>
 
-</div>
-
+ <div class="row">
+        <footer class=" navbar-fixed-bottom">
+    <div class=" cus-footer container-fluid">
+        <a class="" href="#" target="_blank">
+            <p>جميع الحقوق محفوظة pharmaplus &copy;</p>
+        </a>
+    </div>
+</footer>
+    </div>
 
 </body>
 
