@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: arabic;
+    src: url(bootstrap/fonts/hacen_tunisia.ttf);
+}
 $header-background: /*#2196F3*/#00C2D9/*#00BFFF*/ /*#0a87fc*/;
 $dark-blue: $header-background * 0.8;
 $body-background: /*#EAEAEA;*/#EEEFEF!important;;
@@ -45,8 +48,17 @@ $shortcut-height: 45px;
   }
   // color:#ffffff;
 }
-body, ul, li{
+html, body{
   height: 100% !important;
+  margin: 0 !important;
+  //overflow-y: hidden;
+  direction: ltr;
+  background-color: $body-background;
+  font-family: arabic;
+  padding: 0;
+
+
+ // padding: auto !important;
 
 }
 .vertical{
@@ -59,22 +71,45 @@ body, ul, li{
   align-items: center;
   z-index: 5;
 
+}.vertical-content{
+  top: 110px;
+  min-height: 70%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 70vh; /* These two lines are counted as one :-)       */
+  //position: relative;
+  //display: inline;
+ // right:20px;
+  //top:70px;
+  padding-left: auto;
+  padding-right: 80px;
+  align-items: center;
+  z-index: 5;
+
 }
 
 .container-cus{
-   align-content: stretch;
+   //align-content: stretch;
   background-color: $body-background;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
+ // display: -webkit-box;
+  //display: -moz-box;
+  //display: -ms-flexbox;
+  //display: -webkit-flex;
+ // display: flex;
+ // -ms-flex-flow: row wrap;
+  //-webkit-flex-flow: row wrap;
+ // flex-flow: row wrap;
+overflow-y: hidden !important;
   width:100% !important;
   margin-left:0 !important;
   margin-right:0 !important;
+ // margin-top:60px ;
+ // padding-left: 50px;
+ // padding-right: 50px;
+   padding-top: 80px !important;
+ // padding: 0 !important;
+   //min-height: 100%;
+    height:auto !important; /* cross-browser */
+    height: 100%; /* cross-browser */
+  //min-height: 100% !important;
  // padding-top: 54px   !important;
   //height: 100% !important;
   //position: relative;
@@ -85,17 +120,25 @@ body, ul, li{
 .li-box{
       background-color: $body-background;
     cursor: pointer;
-    float: left;
-   // width: 330px;
+    float: right;
+    //width: 330px;
     //height: 330px;
-    position: relative;
-  padding:26px 15px 26px 15px ;
+    //position: relative;
+  //padding:26px 15px 26px 15px ;
 }
 .li-box:hover, .li-box:focus, .li-box:active, .li-box:active, .li-box:target {
   background-color: $header-background !important;
+a{
+          text-decoration: none !important;
+
+}
   .icon, .text{
     color: white;
   }
+}
+.col-background{
+  background-color: #E8E8E8 !important;
+
 }
 .darker-icon{
   background-color: #E8E8E8 !important;
@@ -296,7 +339,43 @@ body, ul, li{
 .cus-footer:hover{
   background-color: $dark-blue;
 }
-
+/*nav bar links*/
+/* Link */
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #333;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #346b8b;
+    background-color: #fff;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #346b8b;
+    background-color: #fff;
+}
+/* Caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open > a:hover .caret,
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
 
 
 

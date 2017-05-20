@@ -1,3 +1,6 @@
+@font-face {
+  font-family: arabic;
+  src: url(bootstrap/fonts/hacen_tunisia.ttf); }
 .page-items {
   text-align: center; }
   .page-items i, .page-items p {
@@ -24,8 +27,13 @@
   .custom-navbar .tab-button {
     color: #ffffff !important; }
 
-body, ul, li {
-  height: 100% !important; }
+html, body {
+  height: 100% !important;
+  margin: 0 !important;
+  direction: ltr;
+  background-color: #EEEFEF !important;
+  font-family: arabic;
+  padding: 0; }
 
 .vertical {
   min-height: 85%;
@@ -39,32 +47,43 @@ body, ul, li {
   align-items: center;
   z-index: 5; }
 
+.vertical-content {
+  top: 110px;
+  min-height: 70%;
+  /* Fallback for browsers do NOT support vh unit */
+  min-height: 70vh;
+  /* These two lines are counted as one :-)       */
+  padding-left: auto;
+  padding-right: 80px;
+  align-items: center;
+  z-index: 5; }
+
 .container-cus {
-  align-content: stretch;
   background-color: #EEEFEF !important;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
+  overflow-y: hidden !important;
   width: 100% !important;
   margin-left: 0 !important;
-  margin-right: 0 !important; }
+  margin-right: 0 !important;
+  padding-top: 80px !important;
+  height: auto !important;
+  /* cross-browser */
+  height: 100%;
+  /* cross-browser */ }
 
 .li-box {
   background-color: #EEEFEF !important;
   cursor: pointer;
-  float: left;
-  position: relative;
-  padding: 26px 15px 26px 15px; }
+  float: right; }
 
 .li-box:hover, .li-box:focus, .li-box:active, .li-box:active, .li-box:target {
   background-color: #00C2D9 !important; }
+  .li-box:hover a, .li-box:focus a, .li-box:active a, .li-box:active a, .li-box:target a {
+    text-decoration: none !important; }
   .li-box:hover .icon, .li-box:hover .text, .li-box:focus .icon, .li-box:focus .text, .li-box:active .icon, .li-box:active .text, .li-box:active .icon, .li-box:active .text, .li-box:target .icon, .li-box:target .text {
     color: white; }
+
+.col-background {
+  background-color: #E8E8E8 !important; }
 
 .darker-icon {
   background-color: #E8E8E8 !important; }
@@ -211,5 +230,42 @@ body, ul, li {
 
 .cus-footer:hover {
   background-color: #009bae; }
+
+/*nav bar links*/
+/* Link */
+.navbar-default .navbar-nav > li > a {
+  color: #fff; }
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #333; }
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #346b8b;
+  background-color: #fff; }
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #346b8b;
+  background-color: #fff; }
+
+/* Caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+  border-top-color: #777;
+  border-bottom-color: #777; }
+
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: #333;
+  border-bottom-color: #333; }
+
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open > a:hover .caret,
+.navbar-default .navbar-nav > .open > a:focus .caret {
+  border-top-color: #555;
+  border-bottom-color: #555; }
 
 /*# sourceMappingURL=custom-style.css.map */

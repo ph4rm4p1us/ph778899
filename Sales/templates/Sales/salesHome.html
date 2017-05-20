@@ -1,8 +1,8 @@
 {% extends 'Core/base.html' %}
 {% block body %}
-    <div class="col-lg-11 col-xs-10">
-        <div class="mainmenu">
-            <a href="{% url 'Sales:new_invoice' %}" class="menuitem">
+    <div class="col-md-8 col-md-offset-2 col-xs-12 vertical-content">
+        <div class="col-md-4 col-xs-12 li-box pull-right darker-icon">
+            <a href="{% url 'Sales:new_invoice' %}">
                 <div class="icon">
                     <i class="fa fa-list-alt"></i>
                 </div>
@@ -10,7 +10,10 @@
                     فاتورة مبيعات
                 </div>
             </a>
-            <a href="#" class="menuitem">
+        </div>
+        <div class="col-md-4 col-xs-12 li-box pull-right darker-icon">
+
+            <a href="#">
                 <div class="icon">
                     <i class="fa fa-undo"></i>
                 </div>
@@ -18,14 +21,17 @@
                     مرتجع مبيعات
                 </div>
             </a>
-            <a href="#" class="menuitem">
+        </div>
+        <div class="col-md-4 col-xs-12 li-box pull-right darker-icon">
+            <a href="#">
                 <div class="icon">
                     <i class="fa fa-line-chart"></i>
                 </div>
                 <div class="text">
-تقارير المبيعات
+                    تقارير المبيعات
                 </div>
             </a>
         </div>
     </div>
+
 {% endblock %}

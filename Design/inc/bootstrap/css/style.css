@@ -2,14 +2,14 @@
     font-family: arabic;
     src: url(../fonts/hacen_tunisia.ttf);
 }
-
+/**
 body {
-    background-color: #228866;
+    background-color: red;
     font-family: arabic;
-    direction: rtl;
+    //direction: rtl;
     margin: 0px;
     max-height: 80%;
-}
+}**/
 .main_panel{
     min-height: 450px;
 }
