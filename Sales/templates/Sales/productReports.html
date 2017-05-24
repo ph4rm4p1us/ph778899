@@ -1,0 +1,81 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 center">
+                        تقارير المنتجات
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body main_panel" style="overflow-y: auto;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 center">
+                        {% if form %}
+                            <form class="form-horizontal" method="GET" action="#">
+                                {% csrf_token %}
+                                <table class="table table-responsive">
+                                    {% include 'Core/form_template.html' %}
+                                    <tr>
+                                        <td>من</td>
+                                        <td>
+                                            <input type="date" class="form-control" name="from">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>إلي</td>
+                                        <td>
+                                            <input type="date" class="form-control" name="to">
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <button type="submit" class="btn btn-info"><span class="fa fa-search"></span>بحث
+                                </button>
+                            </form>
+                        {% endif %}
+                        {% if this_item %}
+                            تقارير المنتجات
+                            <table class="table table-responsive">
+                                <tr class="bg bg-pharma-blue">
+                                    <td>
+                                        اسم المنتج
+                                    </td>
+                                    <td>
+                                        الكمية المباعة
+                                    </td>
+                                    <td>
+                                        إجمالي السعر
+                                    </td>
+                                </tr>
+                                {% for x in item_statics %}
+                                    <tr>
+                                        <td>
+                                            {{ this_item }}
+                                        </td>
+                                        <td>
+                                            {{ x.main_unit_quantity }} || {{ x.med_unit_quantity }}
+                                        </td>
+                                        <td>
+                                            {{ x.total_price }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                {{ items_main_qnt }}
+                            </table>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('document').ready(function () {
+            $(".select2").select2();
+        });
+    </script>
+{% endblock %}

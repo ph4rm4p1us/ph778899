@@ -1,0 +1,51 @@
+{% extends 'Core/empty_base.html' %}
+{% block body %}
+
+    <div class="panel" style="overflow-y: auto;">
+        <div class="panel-body main_panel" style="overflow-y: auto;">
+            <form method="POST" data-target='#payModal' target="_parent" id="salesForm" action="{% url 'Sales:invoice_payment' this_invoice.id %}">
+                {% csrf_token %}
+                <table class="table table-responsive">
+                    <tr>
+                        <td class="col-lg-4">رقم الفاتورة</td>
+                        <td class="col-lg-8">{{ this_invoice.id }}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-4">اجمالي الفاتورة</td>
+                        <td class="col-lg-8">{{ this_invoice.total_price }}</td>
+                    </tr>
+
+                    {% include 'Core/form_template.html' %}
+
+                    <tr>
+                        <td class="col-lg-4">الباقي</td>
+                        <td class="col-lg-8"><input class="form-control" value="0" type="number" id="change"> </td>
+                    </tr>
+                </table>
+                <button class="btn btn-success" id="add"><span class="fa fa-plus"></span> إضافة</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        $('document').ready(function () {
+            $("#select2").select2();
+            get_change();
+        });
+        $(document).on('submit', '#salesForm', function (e) {
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: $(this).serialize(),
+            });
+            e.preventDefault();
+            $('#payModal').toggle();
+            $('#pay').hide();
+            location.reload();
+        });
+        function get_change() {
+            var change = {{ this_invoice.total_price }} - $('#id_debit').val();
+            $('#change').val(change);
+        }
+
+    </script>
+{% endblock %}

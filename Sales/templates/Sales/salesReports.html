@@ -2,28 +2,28 @@
 {% block body %}
     <div class="col-lg-11 col-xs-10">
         <div class="mainmenu">
-            <a href="{% url 'Sales:new_invoice' %}" class="menuitem">
+            <a href="{% url 'Sales:customer_reports' %}" class="menuitem">
                 <div class="icon">
                     <i class="fa fa-list-alt"></i>
                 </div>
                 <div class="text">
-                    فاتورة مبيعات
+                   تقارير العملاء
                 </div>
             </a>
-            <a href="{% url 'Sales:reverse' %}" class="menuitem">
+            <a href="{% url 'Sales:product_reports' %}" class="menuitem">
                 <div class="icon">
                     <i class="fa fa-undo"></i>
                 </div>
                 <div class="text">
-                    مرتجع مبيعات
+تقارير المنتجات
                 </div>
             </a>
-            <a href="{% url 'Sales:sales_reports' %}" class="menuitem">
+            <a href="{% url 'Sales:invoice_reports' %}" class="menuitem">
                 <div class="icon">
                     <i class="fa fa-line-chart"></i>
                 </div>
                 <div class="text">
-تقارير المبيعات
+تقارير الفواتير
                 </div>
             </a>
         </div>

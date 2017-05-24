@@ -10,9 +10,10 @@ class SalesInvoice(models.Model):
     total_price = models.FloatField(default=0.0)
     status = models.SmallIntegerField(default=0)
     # 0: Not Saved    1: Saved, Not Assigned   2: Saved, Paid
-    client_name = models.ForeignKey('Core.Clients', on_delete=models.CASCADE, null=True)
+    customer = models.ForeignKey('Core.Clients', on_delete=models.CASCADE, null=True)
     sold_by = models.ForeignKey('Core.Employees', on_delete=models.CASCADE)
     branch = models.ForeignKey('Core.Branches', on_delete=models.CASCADE)
+    comment = models.CharField(max_length=128, default=' ')
 
     def __str__(self):
         return str(self.id)

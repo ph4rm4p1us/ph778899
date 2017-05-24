@@ -1,0 +1,210 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 center">
+                        تقارير العملاء
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body main_panel" style="overflow-y: auto;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 center">
+                        {% if form %}
+                            <form class="form-horizontal" method="GET" action="#">
+                                {% csrf_token %}
+                                <table class="table table-responsive">
+                                    {% include 'Core/form_template.html' %}
+                                    <tr>
+                                        <td>من</td>
+                                        <td>
+                                            <input type="date" class="form-control" name="from">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>إلي</td>
+                                        <td>
+                                            <input type="date" class="form-control" name="to">
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <button type="submit" class="btn btn-info"><span class="fa fa-search"></span>بحث
+                                </button>
+                            </form>
+                        {% endif %}
+                        {% if this_customer %}
+                            فواتير العميل
+                            <table class="table table-responsive">
+                                <tr class="bg bg-pharma-blue">
+                                    <td>
+                                        رقم الفاتورة
+                                    </td>
+                                    <td>
+                                        تاريخ البيع
+                                    </td>
+                                    <td>
+                                        إجمالي الفاتورة
+                                    </td>
+                                    <td>
+                                        حالة الفاتورة
+                                    </td>
+                                </tr>
+                                {% for invoice in invoices %}
+                                    <tr>
+                                        <td>
+                                            {{ invoice.id }}
+                                        </td>
+                                        <td>
+                                            {{ invoice.date }}
+                                        </td>
+                                        <td>
+                                            {{ invoice.total_price }}
+                                        </td>
+                                        <td>
+                                            {{ invoice.status }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            المنتجات
+                            <table class="table table-responsive">
+                                <tr class="bg bg-pharma-blue">
+                                    <td>
+                                        رقم الفاتورة
+
+                                    </td>
+                                    <td>
+                                        المنتج
+                                    </td>
+                                    <td>
+                                        الكمية
+                                    </td>
+                                    <td>
+                                        سعر الوحدة
+                                    </td>
+                                    <td>
+                                        الخصم
+                                    </td>
+                                    <td>
+                                        الإجمالي
+                                    </td>
+                                </tr>
+                                {% for x in items %}
+                                    <tr>
+                                        <td>
+                                            {{ x.invoice }}
+                                        </td>
+                                        <td>
+                                            {{ x.item.item }}
+                                        </td>
+                                        <td>
+                                            {{ x.main_unit_quantity }} || {{ x.med_unit_quantity }}
+                                        </td>
+                                        <td>
+                                            {{ x.main_unit_price }} || {{ x.med_unit_price }}
+                                        </td>
+                                        <td>
+                                            {{ x.discount }}
+                                        </td>
+                                        <td>
+                                            {{ x.total_price }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                    <tr>
+                                        <td class="bg-pharma-blue">
+
+                                        </td>
+                                        <td class="bg-pharma-blue">
+                                            إجمالي
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+                                            {{ items_total_price }}
+                                        </td>
+                                    </tr>
+                            </table>
+                            حسابات العميل
+                            <table class="table table-responsive">
+                                <tr class="bg bg-pharma-blue">
+                                    <td>
+                                        بيان
+                                    </td>
+                                    <td>
+                                        دائن
+                                    </td>
+                                    <td>
+                                        مدين
+                                    </td>
+                                    <td>
+                                        التاريخ
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        رصيد اول المدة
+                                    </td>
+                                    <td>
+                                        {{ credit }}
+                                    </td>
+                                    <td>
+                                        {{ debit }}
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                {% for x in customer_payments %}
+                                    <tr>
+                                        <td>
+                                            {{ x.comment }}
+                                        </td>
+                                        <td>
+                                            {{ x.credit }}
+                                        </td>
+                                        <td>
+                                            {{ x.debit }}
+                                        </td>
+                                        <td>
+                                            {{ x.date }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td class="bg-pharma-blue">
+                                        إجمالي
+                                    </td>
+                                    <td>
+                                        {{ total_credits }}
+                                    </td>
+                                    <td>
+                                        {{ total_debits }}
+                                    </td>
+                                </tr>
+                            </table>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('document').ready(function () {
+            $(".select2").select2();
+        });
+    </script>
+{% endblock %}

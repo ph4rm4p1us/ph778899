@@ -1,0 +1,77 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 center">
+                        مرتجع مبيعات
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body main_panel" style="overflow-y: auto;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 center">
+                        <form class="form-horizontal {% if invoice_items %}hidden{% endif %}" id="invoiceForm" method="POST" action="#" target="_parent">
+                            {% csrf_token %}
+                            {% include 'Core/form_template.html' %}
+                            <input type="number" name="id" id='id' class="form-control" placeholder="رقم الفاتورة"
+                                   required>
+                            <button class="btn btn-info" onclick=""><span
+                                    class="fa fa-search"></span>بحث
+                            </button>
+                        </form>
+                    {% if invoice_items %}
+                        <div id="invoice_items">
+                            <table class="table table-responsive table-bordered">
+                                <thead>
+                                <tr class="bg-success">
+                                    <td class="bg-success">الصنف</td>
+                                    <td class="bg-success">عدد:وحدة</td>
+                                    <td class="bg-success">السعر</td>
+                                    <td class="bg-success">الإجمالي</td>
+                                    <td class="bg-success"></td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for invoice_item in invoice_items %}
+                                    <tr>
+                                        <td>{{ invoice_item.item.item }}</td>
+                                        <td>
+                                            {{ invoice_item.main_unit_quantity }} : {{ invoice_item.med_unit_quantity }}
+                                        </td>
+                                        <td>
+                                            {{ invoice_item.main_unit_price }} : {{ invoice_item.med_unit_price }}
+                                        </td>
+                                        <td>{{ invoice_item.total_price }}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger"><span class="fa fa-arrow-circle-o-left"></span> مرتجع</a>
+                                    </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td class="bg-success">الإجمالي</td>
+                                    <td class="bg-success"></td>
+                                    <td class="bg-success"></td>
+                                    <td class="bg-success">{{ this_invoice.total_price }}</td>
+                                    <td class="bg-success"></td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('document').ready(function () {
+            $(".select2").select2();
+        });
+    </script>
+{% endblock %}

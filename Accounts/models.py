@@ -30,3 +30,13 @@ class TreasuryTransaction(models.Model):
     def __str__(self):
         return self.treasury.name + '-' + self.amount + '-' + self.comment
 
+
+class CustomerAccounts(models.Model):
+    customer = models.ForeignKey(Clients, on_delete=models.CASCADE)
+    credit = models.FloatField(default=0)
+    debit = models.FloatField(default=0)
+    comment = models.CharField(max_length=256)
+    date = models.DateTimeField()
+
+    def __str__(self):
+        return self.customer.name + '-' + self.comment

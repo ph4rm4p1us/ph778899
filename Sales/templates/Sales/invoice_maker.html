@@ -13,6 +13,32 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" role="dialog" id="saveModal">
+        <div class="modal-dialog">
+            <div class="modal-header bg-pharma-blue">
+                حفظ الفاتورة
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:white;">&times;
+                </button>
+
+            </div>
+            <div class="modal-body bg-pharma-green" id="saveInvoice">
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" id="payModal">
+        <div class="modal-dialog">
+            <div class="modal-header bg-pharma-blue">
+                دفع الفاتورة
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:white;">&times;
+                </button>
+
+            </div>
+            <div class="modal-body bg-pharma-green" id="payInvoice">
+
+            </div>
+        </div>
+    </div>
 
     <div class="col-lg-11 col-xs-10 system_page">
         <div class="panel" style="overflow-y: auto;">
@@ -69,34 +95,35 @@
                             </tfoot>
                         </table>
                     </div>
-                    <form class="form-horizontal col-lg-6 col-md-6" method="POST">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label>بحث عن دواء</label>
-                            <select name="item" class="select2" style="width: 100%;" id="med"
-                                    onchange="search()">
-                                <option class="selected">بحث عن دواء</option>
-                                {% for x in all_items %}
-                                    <option value="{{ x.id }}"
-                                            {% if x.main_unit_stock == 0 %}
-                                            class="bg-danger"
-                                            {% endif %}
-                                    >
-                                        {{ x.barcode }}
-                                        {{ x.commercial_name }} ||
-                                        {{ x.type }} ||
-                                        {{ x.arabic_name }} ||
-                                        {{ x.generic_name }}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                            <select name="stock" class="form-control" style="display: none;" id="stock">
+                    {% if not_saved %}
+                        <form class="form-horizontal col-lg-6 col-md-6" method="POST" id="searchForm">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>بحث عن دواء</label>
+                                <select name="item" class="select2" style="width: 100%;" id="med"
+                                        onchange="search()">
+                                    <option class="selected">بحث عن دواء</option>
+                                    {% for x in all_items %}
+                                        <option value="{{ x.id }}"
+                                                {% if x.main_unit_stock == 0 %}
+                                                class="bg-danger"
+                                                {% endif %}
+                                        >
+                                            {{ x.barcode }}
+                                            {{ x.commercial_name }} ||
+                                            {{ x.type }} ||
+                                            {{ x.arabic_name }} ||
+                                            {{ x.generic_name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                <select name="stock" class="form-control" style="display: none;" id="stock">
 
-                            </select>
+                                </select>
 
-                        </div>
-                    </form>
-
+                            </div>
+                        </form>
+                    {% endif %}
                     <button class="btn btn-success" onclick="add_Item()" id="addBtn"
                             style="display: none;"><span
                             class="fa fa-plus"></span>
@@ -109,11 +136,18 @@
 
                 </div>
                 <div class="row center">
-                    <button class="btn btn-success">كشف تفاعلات الأدوية</button>
-                    <button class="btn btn-success">دفع الفاتورة</button>
+                    <button class="btn btn-success" id="check">كشف تفاعلات الأدوية</button>
+
+                    {% if can_pay %}
+                        <button onclick="pay_invoice()" class="btn btn-success" id="pay">دفع الفاتورة</button>
+                    {% endif %}
                     <button class="btn btn-primary">طباعة الجرعات</button>
-                    <button class="btn btn-warning">حفظ الفاتورة</button>
-                    <button class="btn btn-danger">إلغاء الفاتورة</button>
+                    {% if not_saved %}
+                        <button onclick="save_invoice()" class="btn btn-warning" id="save">حفظ الفاتورة</button>
+                    {% endif %}
+                    {% if not_saved %}
+                        <button onclick='cancel_invoice()' class="btn btn-danger" id="cancel">إلغاء الفاتورة</button>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -140,6 +174,31 @@
         }
         function refresh() {
             location.reload();
+        }
+        function save_invoice() {
+            var myModal = $('#saveInvoice');
+            var saveModal = $('#saveModal');
+            saveModal.modal('show');
+            myModal.load(window.location.origin + '{% url 'Sales:save_invoice' this_invoice.id %}');
+            var button = $('#save');
+            button.hide();
+            $('#cancel').hide();
+            $('#searchForm').hide();
+            setTimeout(function hideModal() {
+                saveModal.modal('hide');
+            }, 1000);
+            refresh();
+        }
+        function pay_invoice() {
+            var myModal = $('#payInvoice');
+            var payModal = $('#payModal');
+            payModal.modal('show');
+            myModal.load(window.location.origin + '{% url 'Sales:invoice_payment' this_invoice.id %}');
+        }
+        function cancel_invoice() {
+            var myModal = $('#payInvoice');
+            myModal.load(window.location.origin + '{% url 'Sales:cancel_invoice' this_invoice.id %}');
+            window.location = window.location.origin + '{% url 'Sales:edit_invoice' perv_invoice.id %}'
         }
     </script>
 {% endblock %}

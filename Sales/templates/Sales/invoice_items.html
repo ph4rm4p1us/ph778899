@@ -1,48 +1,36 @@
 {% extends 'Core/empty_base.html' %}
 {% block body %}
 
-    <div class="panel" style="overflow-y: auto;">
-        <div class="panel-body main_panel" style="overflow-y: auto;">
-            <form method="POST" data-target='#myModal2' target="_parent" id="salesForm" action="Add/?item={{ this_stock.id }}">
-                {% csrf_token %}
-                <table class="table table-responsive">
-                    <tr>
-                        <td class="col-lg-4">الصنف</td>
-                        <td class="col-lg-8">{{ this_stock.item }}</td>
-                    </tr>
-                    <tr>
-                        <td class="col-lg-4">الصلاحية</td>
-                        <td class="col-lg-8">{{ this_stock.expiration }}</td>
-                    </tr>
-                    <tr>
-                        <td class="col-lg-4">سعر الوحدة</td>
-                        <td class="col-lg-8">{{ this_stock.main_unit_price }}</td>
-                    </tr>
-                    <tr>
-                        <td class="col-lg-4">سعر الوحدة الوسطي</td>
-                        <td class="col-lg-8">{{ this_stock.med_unit_price }}</td>
-                    </tr>
-                    <tr>
-                        <td class="col-lg-4">الكمية المتاحة</td>
-                        <td class="col-lg-8">{{ this_stock.main_unit_stock }}:{{ this_stock.med_unit_stock }}</td>
-                    </tr>
-
-                    {% include 'Core/form_template.html' %}
-                </table>
-                <button class="btn btn-success" id="add"><span class="fa fa-plus"></span> إضافة</button>
-            </form>
-        </div>
-    </div>
-    <script>
-        $(document).on('submit', '#salesForm', function (e) {
-            $.ajax({
-                url: $(this).attr('action'),
-                type: $(this).attr('method'),
-                data: $(this).serialize(),
-            });
-            e.preventDefault();
-            $('#myModal3').toggle();
-            location.reload();
-        });
-    </script>
+                            <table class="table table-responsive table-bordered">
+                                <thead>
+                                <tr>
+                                    <td class="bg-success">الصنف</td>
+                                    <td class="bg-success">عدد:وحدة</td>
+                                    <td class="bg-success">السعر</td>
+                                    <td class="bg-success">الإجمالي</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for invoice_item in invoice_items %}
+                                    <tr>
+                                        <td>{{ invoice_item.item.item }}</td>
+                                        <td>
+                                            {{ invoice_item.main_unit_quantity }} : {{ invoice_item.med_unit_quantity }}
+                                        </td>
+                                        <td>
+                                            {{ invoice_item.main_unit_price }} : {{ invoice_item.med_unit_price }}
+                                        </td>
+                                        <td>{{ invoice_item.total_price }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td class="bg-success">الإجمالي</td>
+                                    <td class="bg-success"></td>
+                                    <td class="bg-success"></td>
+                                    <td class="bg-success">{{ this_invoice_total }}</td>
+                                </tr>
+                                </tfoot>
+                            </table>
 {% endblock %}

@@ -2,6 +2,8 @@
 from django import forms
 from .models import *
 from Stock.models import *
+from Accounts.models import *
+
 
 class AddItemForm(forms.ModelForm):
     class Meta:
@@ -29,3 +31,64 @@ class AddItemForm(forms.ModelForm):
             'total_price': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'إجمالي السعر'}),
         }
 
+
+class PayForm(forms.ModelForm):
+    class Meta:
+        model = CustomerAccounts
+        fields = [
+            'customer',
+            'debit',
+        ]
+
+        labels = {
+            'customer': 'العميل',
+            'debit': "المدفوع",
+        }
+        widgets = {
+            'customer': forms.Select(attrs={'class': 'form-control select2'}),
+            'debit': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'المدفوع', 'onkeyup': 'get_change();'}),
+        }
+
+
+class CustomerReports(forms.ModelForm):
+    class Meta:
+        model = SalesInvoice
+        fields = [
+            'customer',
+        ]
+
+        labels = {
+            'customer': 'العميل',
+        }
+        widgets = {
+            'customer': forms.Select(attrs={'class': 'form-control select2'}),
+        }
+
+
+class ProductReports(forms.ModelForm):
+    class Meta:
+        model = MedicineStock
+        fields = [
+            'item',
+        ]
+
+        labels = {
+            'item': 'الصنف',
+        }
+        widgets = {
+            'item': forms.Select(attrs={'class': 'form-control select2'}),
+        }
+
+
+class ReverseInvoiceForm(forms.ModelForm):
+    class Meta:
+        model = SalesInvoice
+        fields = [
+            'id'
+        ]
+        labels = {
+            'id': "رقم الفاتورة"
+        }
+        widgets = {
+            'id': forms.Select(attrs={'class': 'form-control'})
+        }
