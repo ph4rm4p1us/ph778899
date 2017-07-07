@@ -19,7 +19,7 @@ def get_employee(request):
 
 def get_pharmacy(request):
     branch = get_branch(request)
-    pharmacy = branch.Pharmacy
+    pharmacy = branch.pharmacy
     return pharmacy
 
 

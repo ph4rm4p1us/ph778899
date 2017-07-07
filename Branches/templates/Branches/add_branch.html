@@ -1,0 +1,24 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+                إضافة فرع
+            </div>
+            <div class="panel-body">
+                {% if success_message %}
+                    <div class="alert-success">
+                        {{ success_message }}
+                    </div>
+                {% endif %}
+                <form method="POST" action="#">
+                    {% csrf_token %}
+                    <table class="table table-responsive">
+                        {% include 'Core/form_template.html' %}
+                    </table>
+                    <button type="submit" class="btn btn-success">إضافة</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

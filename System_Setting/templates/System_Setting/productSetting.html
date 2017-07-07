@@ -1,0 +1,50 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="modal fade" role="dialog" id="productSetting">
+        <div class="modal-dialog">
+            <div class="modal-header bg-pharma-blue">
+                إدارة المنتج
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:white;">&times;
+                </button>
+
+            </div>
+            <div class="modal-body bg-pharma-green" id="productModal">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6 col-xs-12">
+                        إدارة المنتجات
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body main_panel" style="overflow-y: auto;">
+                <select name="medicine" class="select2 form-control" onchange="get_product_settings()">
+                    <option selected>اختر دواء</option>
+                    {% for x in x %}
+                        <option value="{{ x.id }}"
+                                {% if x.main_unit_stock == 0 %}
+                                class="bg-danger"
+                                {% endif %}
+                        >
+                            {{ x.barcode }}
+                            {{ x.commercial_name }} ||
+                            {{ x.type }} ||
+                            {{ x.arabic_name }} ||
+                            {{ x.generic_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('document').ready(function () {
+        });
+    </script>
+{% endblock %}

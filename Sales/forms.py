@@ -45,7 +45,7 @@ class PayForm(forms.ModelForm):
             'debit': "المدفوع",
         }
         widgets = {
-            'customer': forms.Select(attrs={'class': 'form-control select2'}),
+            'customer': forms.Select(attrs={'class': 'select2 form-control'}),
             'debit': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'المدفوع', 'onkeyup': 'get_change();'}),
         }
 

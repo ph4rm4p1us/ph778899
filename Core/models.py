@@ -102,8 +102,12 @@ class Pharmacy(models.Model):
 
 class Branches(models.Model):
     name = models.CharField(max_length=200, blank=False)
+    governorate = models.ForeignKey(Governorate, blank=False, null=True)
+    city = models.ForeignKey(City, blank=False, null=True)
+    area = models.ForeignKey(Area, blank=False, null=True)
     location = models.CharField(max_length=200, blank=False)
     phone = models.CharField(max_length=15, blank=False)
+    manager = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     pharmacy = models.ForeignKey(Pharmacy, on_delete=models.CASCADE)
 
     def __str__(self):

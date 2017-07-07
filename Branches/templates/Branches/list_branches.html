@@ -1,0 +1,49 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+                عرض الفرع
+            </div>
+            <div class="panel-body">
+                <table class="table table-responsive" id="example1">
+                    <thead class="btn-info">
+                    <tr>
+                        <td>اسم الفرع</td>
+                        <td>المحافظة</td>
+                        <td>المدينة</td>
+                        <td>المنطقة</td>
+                        <td>عنوان الفرع</td>
+                        <td>أرقام التليفون</td>
+                        <td>مدير الفرع</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for branch in branches %}
+                        <tr>
+                            <td>{{ branch.name }}</td>
+                            <td>{{ branch.governorate }}</td>
+                            <td>{{ branch.city }}</td>
+                            <td>{{ branch.area }}</td>
+                            <td>{{ branch.location }}</td>
+                            <td>{{ branch.phone }}</td>
+                            <td>{{ branch.manager.name }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="btn-info">
+                    <tr>
+                        <td>اسم الفرع</td>
+                        <td>المحافظة</td>
+                        <td>المدينة</td>
+                        <td>المنطقة</td>
+                        <td>عنوان الفرع</td>
+                        <td>أرقام التليفون</td>
+                        <td>مدير الفرع</td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

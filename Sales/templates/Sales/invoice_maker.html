@@ -100,7 +100,7 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label>بحث عن دواء</label>
-                                <select name="item" class="select2" style="width: 100%;" id="med"
+                                <select name="item" class="select2 form-control" id="med"
                                         onchange="search()">
                                     <option class="selected">بحث عن دواء</option>
                                     {% for x in all_items %}
