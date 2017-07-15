@@ -6,6 +6,7 @@ from Core.views import *
 from Stock.models import *
 from datetime import datetime, timedelta
 from django.db.models import Sum, Avg, Count
+import sys
 
 
 # Create your views here.
@@ -317,7 +318,7 @@ def reverse(request):
     }
     if form.is_valid():
         invoice_id = request.POST['id']
-        invoice_items = InvoiceItems.objects.filter(invoice__id=invoice_id)
+        invoice_items = InvoiceItems.objects.filter(invoice__id=invoice_id, invoice__branch=get_branch(request))
         context.update({'invoice_items': invoice_items})
     return render(request, 'Sales/reverse.html', context)
 
@@ -331,3 +332,25 @@ def get_invoice_items(request, invoice_id):
     }
     return render(request, 'Sales/invoice_items.html', context)
 
+
+def reverse_item(request):
+    try:
+        item_id = request.GET['id']
+        reversed_item = InvoiceItems.objects.get(id=item_id, invoice__branch=get_branch(request))
+        stock_item = reversed_item.item
+        old_main_stock = stock_item.main_unit_stock
+        new_main_stock = old_main_stock + reversed_item.main_unit_quantity
+        old_med_stock = stock_item.med_unit_stock
+        new_med_stock = old_med_stock + reversed_item.med_unit_quantity
+        stock_item.main_unit_stock = new_main_stock
+        stock_item.med_unit_stock = new_med_stock
+        stock_item.save()
+        reversed_item.delete()
+        error_message = "تم عمل مرتجع مبيعات للمنتج"
+    except:
+        error_message = "حدث خطأ ما برجاء المحاولة مرة أخري"
+        error_message += str(sys.exc_info())
+    context = {
+        'error_message': error_message
+    }
+    return render(request, 'Sales/reverse_item.html', context)

@@ -1,6 +1,18 @@
 {% extends 'Core/base.html' %}
 {% block body %}
+    <div class="modal fade" role="dialog" id="reverseModal">
+        <div class="modal-dialog">
+            <div class="modal-header bg-pharma-blue">
+مرتجع مبيعات
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:white;">&times;
+                </button>
 
+            </div>
+            <div class="modal-body bg-pharma-green" id="reverseMessage">
+
+            </div>
+        </div>
+    </div>
     <div class="col-lg-11 col-xs-10 system_page">
         <div class="panel" style="overflow-y: auto;">
             <div class="panel-heading bg-pharma-blue center">
@@ -46,7 +58,7 @@
                                         </td>
                                         <td>{{ invoice_item.total_price }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-danger"><span class="fa fa-arrow-circle-o-left"></span> مرتجع</a>
+                                        <button onclick="reverse({{ invoice_item.id }})" class="btn btn-danger"><span class="fa fa-arrow-circle-o-left"></span> مرتجع</button>
                                     </td>
                                     </tr>
                                 {% endfor %}
@@ -73,5 +85,15 @@
         $('document').ready(function () {
             $(".select2").select2();
         });
+
+        function reverse(id) {
+            var myModal = $('#reverseMessage');
+            var payModal = $('#reverseModal');
+            payModal.modal('show');
+            myModal.load(window.location.origin + '/Sales/Invoice/Reverse/Item?id=' + id)
+            setTimeout(function(){
+                location.reload()
+            },3000)
+        }
     </script>
 {% endblock %}
