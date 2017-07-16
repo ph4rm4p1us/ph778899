@@ -354,3 +354,34 @@ def reverse_item(request):
         'error_message': error_message
     }
     return render(request, 'Sales/reverse_item.html', context)
+
+
+def list_invoices(request):
+    context = {
+        'all_invoices': all_invoices,
+    }
+    return render(request, 'Sales/list_invoices.html', context)
+
+
+def all_invoices(request):
+    invoices = SalesInvoice.objects.filter(branch=get_branch(request)).order_by('-date')
+    context = {'invoices': invoices}
+    return render(request, 'Sales/invoices_table.html', context)
+
+
+def unsaved_invoices(request):
+    invoices = SalesInvoice.objects.filter(branch=get_branch(request), status=0).order_by('-date')
+    context = {'invoices': invoices}
+    return render(request, 'Sales/invoices_table.html', context)
+
+
+def saved_invoices(request):
+    invoices = SalesInvoice.objects.filter(branch=get_branch(request), status=1).order_by('-date')
+    context = {'invoices': invoices}
+    return render(request, 'Sales/invoices_table.html', context)
+
+
+def paid_invoices(request):
+    invoices = SalesInvoice.objects.filter(branch=get_branch(request), status=2).order_by('-date')
+    context = {'invoices': invoices}
+    return render(request, 'Sales/invoices_table.html', context)

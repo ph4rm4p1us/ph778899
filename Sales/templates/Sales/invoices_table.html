@@ -1,0 +1,48 @@
+{% extends 'Core/empty_base.html' %}
+{% block body %}
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <td>رقم الفاتورة</td>
+            <td>تاريخ الفاتورة</td>
+            <td>اسم العميل</td>
+            <td>حالة الفاتورة</td>
+            <td>إجمالي الفاتورة</td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for x in invoices %}
+            <tr>
+                <td>
+                    {{ x.id }}
+                </td>
+                <td>
+                    {{ x.date }}
+                </td>
+                <td>
+                    {{ x.customer.name }}
+                </td>
+                <td>
+                    {% if x.status == 0 %}
+                        <label class="label label-danger">غير محفوظة</label>
+                    {% endif %}
+                    {% if x.status == 1 %}
+                        <label class="label label-warning">قيد الدفع</label>
+                    {% endif %}
+                    {% if x.status == 2 %}
+                        <label class="label label-success">مدفوعة</label>
+                    {% endif %}
+                </td>
+                <td>
+                    {{ x.total_price }}
+                </td>
+                <td>
+                    <a class='btn btn-info' target="_blank" href="{% url 'Sales:edit_invoice' x.id %}"><span class="fa fa-edit"></span></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

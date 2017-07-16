@@ -2,9 +2,17 @@
 {% block body %}
     <div class="col-lg-11 col-xs-10">
         <div class="mainmenu">
-            <a href="{% url 'Sales:new_invoice' %}" class="menuitem">
+            <a href="{% url 'Sales:list_invoices' %}" class="menuitem">
                 <div class="icon">
                     <i class="fa fa-list-alt"></i>
+                </div>
+                <div class="text">
+عرض الفواتير
+                </div>
+            </a>
+            <a href="{% url 'Sales:new_invoice' %}" class="menuitem">
+                <div class="icon">
+                    <i class="fa fa-plus"></i>
                 </div>
                 <div class="text">
                     فاتورة مبيعات
