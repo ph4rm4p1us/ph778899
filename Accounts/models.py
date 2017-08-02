@@ -80,3 +80,15 @@ class ExpenseCategory(models.Model):
             return str(parent) + " > " + self.name
 
 
+class Expense(models.Model):
+    branch = models.ForeignKey(Branches, on_delete=models.CASCADE)
+    amount = models.FloatField()
+    category = models.ForeignKey(ExpenseCategory, on_delete=models.CASCADE)
+    comment = models.CharField(max_length=128)
+    paid_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField()
+
+    def __str__(self):
+        return self.comment
+
+

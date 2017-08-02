@@ -3,6 +3,7 @@ from django.db.models import Q
 from .models import *
 from .forms import *
 from Core.views import *
+from datetime import *
 
 
 # Create your views here.
@@ -210,3 +211,71 @@ def delete_expense_category(request, account_id):
     this.delete()
     return expense_category(request)
 
+
+@login_required(login_url='Core:login_user')
+def expenses(request):
+    page_title = "إدارة المصاريف"
+    content = Expense.objects.filter(branch=get_branch(request))
+    context = {
+        'page_title': page_title,
+        'content': content,
+    }
+    return render(request, 'Accounts/expenses.html', context)
+
+
+@login_required(login_url='Core:login_user')
+def add_expense(request):
+    page_title = "إضافة مصروف"
+    form = AddExpense(request.POST or None)
+    form.fields['category'].queryset = ExpenseCategory.objects.filter(pharmacy=get_pharmacy(request))
+    message = ''
+    if form.is_valid():
+        expense = form.save(commit=False)
+        expense.branch = get_branch(request)
+        expense.paid_by = request.user
+        expense.date = datetime.now()
+        expense.save()
+        message = 'تم إضافة المصاريف بنجاح'
+    context = {
+        'page_title': page_title,
+        'form': form,
+        'message': message,
+    }
+    return render(request, 'Accounts/addExpense.html', context)
+
+
+@login_required(login_url='Core:login_user')
+def edit_expense(request, pk):
+    this = get_object_or_404(Expense, id=pk)
+    page_title = "تعديل مصروف"
+    form = AddExpense(request.POST or None, instance=this)
+    form.fields['category'].queryset = ExpenseCategory.objects.filter(pharmacy=get_pharmacy(request))
+    message = ''
+    if form.is_valid():
+        expense = form.save(commit=False)
+        expense.branch = get_branch(request)
+        expense.paid_by = request.user
+        expense.date = datetime.now()
+        expense.save()
+        message = 'تم تعديل المصاريف بنجاح'
+    context = {
+        'page_title': page_title,
+        'form': form,
+        'message': message,
+    }
+    return render(request, 'Accounts/addExpense.html', context)
+
+
+@login_required(login_url='Core:login_user')
+def delete_expense(request, pk):
+    this = get_object_or_404(Expense, id=pk)
+    if this.branch != get_branch(request):
+        return permission_error(request)
+    else:
+        this.delete()
+        return expenses(request)
+
+
+@login_required(login_url='Core:login_user')
+def expense_reports(request):
+    pass
