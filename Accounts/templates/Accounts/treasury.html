@@ -7,29 +7,27 @@
             </div>
             <div class="panel-body">
 
-                <a href="{% url 'Accounts:add_bank_account' %}" class="btn btn-success pull-right">
+                <a href="{% url 'Accounts:add_treasury' %}" class="btn btn-success pull-right">
                     <span class="fa fa-plus"></span>
                     إضافة
                 </a>
                 <table class="table table-responsive" id="example1">
                     <thead class="btn-info">
                     <tr>
-                        <td>البنك</td>
-                        <td>رقم الحساب</td>
+                        <td>اسم الخزينة</td>
+                        <td>نوع الخزينة</td>
                         <td>الرصيد</td>
-                        <td>العملة</td>
                         <td></td>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for account in accounts %}
+                    {% for x in content %}
                         <tr>
-                            <td>{{ account.name }}</td>
-                            <td>{{ account.account_number }}</td>
-                            <td>{{ account.balance }}</td>
-                            <td>{{ account.currency }}</td>
+                            <td>{{ x.name }}</td>
+                            <td>{% if x.type == 0 %}خزنة رئيسية{% endif %}{% if x.type == 1 %}خزنة فرعية{% endif %}</td>
+                            <td>{{ x.balance }}</td>
                             <td>
-                                <a href="{% url 'Accounts:edit_bank_account' account.id %}" class="btn btn-primary" title="تعديل">
+                                <a href="{% url 'Accounts:edit_treasury' x.id %}" class="btn btn-primary" title="تعديل">
                                     <span class="fa fa-edit"></span>
                                 </a>
                                 <a href="" class="btn btn-success" title="إيداع">
@@ -38,7 +36,7 @@
                                 <a href="" class="btn btn-warning" title="سحب">
                                     <span class="fa fa-arrow-circle-up"></span>
                                 </a>
-                                <a href="{% url 'Accounts:delete_bank_account' account.id %}" class="btn btn-danger" title="حذف">
+                                <a href="{% url 'Accounts:delete_treasury' x.id %}" class="btn btn-danger" title="حذف">
                                     <span class="fa fa-remove"></span>
                                 </a>
                             </td>
@@ -47,10 +45,9 @@
                     </tbody>
                     <tfoot class="btn-info">
                     <tr>
-                        <td>البنك</td>
-                        <td>رقم الحساب</td>
+                        <td>اسم الخزينة</td>
+                        <td>نوع الخزينة</td>
                         <td>الرصيد</td>
-                        <td>العملة</td>
                         <td></td>
                     </tr>
                     </tfoot>

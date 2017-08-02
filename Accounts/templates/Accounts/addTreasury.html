@@ -1,0 +1,35 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+{{ page_title }}
+            </div>
+            <div class="panel-body">
+                {% if message %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endif %}
+                <form method="POST" action="#">
+                    {% csrf_token %}
+                    <table class="table table-responsive">
+                        {% include 'Core/form_template.html' %}
+                        <tr>
+                            <td>
+                                نوع الخزينة
+                            </td>
+                            <td>
+                                <select class="select2 form-control" name="type">
+                                    <option value="0"{% if this.type == 0 %} selected{% endif %}>خزينة رئيسية</option>
+                                    <option value="1"{% if this.type == 1 %} selected{% endif %}>خزينة فرعية</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <button type="submit" class="btn btn-success">إضافة</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

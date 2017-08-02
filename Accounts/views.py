@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 from .models import *
 from .forms import *
 from Core.views import *
@@ -12,9 +13,70 @@ def index(request):
 
 
 @login_required(login_url='Core:login_user')
+def treasury(request):
+    page_title = 'إدارة الخزائن'
+    content = Treasury.objects.filter(pharmacy=get_pharmacy(request), type__in=[0, 1])
+    context = {
+        'page_title': page_title,
+        'content': content,
+    }
+    return render(request, 'Accounts/treasury.html', context)
+
+
+@login_required(login_url='Core:login_user')
+def add_treasury(request):
+    page_title = 'إضافة خزينة'
+    message = ''
+    form = AddTreasury(request.POST or None)
+    if form.is_valid():
+        treasury = form.save(commit=False)
+        treasury.type = request.POST['type']
+        treasury.pharmacy = get_pharmacy(request)
+        treasury.save()
+        message = 'تم إضافة الخزينة بنجاح'
+    context = {
+        'page_title': page_title,
+        'form': form,
+        'message': message,
+    }
+    return render(request, 'Accounts/addTreasury.html', context)
+
+
+@login_required(login_url='Core:login_user')
+def edit_treasury(request, pk):
+    page_title = 'تعديل خزينة'
+    this = get_object_or_404(Treasury, id=pk)
+    message = ''
+    form = AddTreasury(request.POST or None, instance=this)
+    if form.is_valid():
+        treasury = form.save(commit=False)
+        treasury.type = request.POST['type']
+        treasury.pharmacy = get_pharmacy(request)
+        treasury.save()
+        message = 'تم تعديل الخزينة بنجاح'
+    context = {
+        'page_title': page_title,
+        'form': form,
+        'message': message,
+        'this': this,
+    }
+    return render(request, 'Accounts/addTreasury.html', context)
+
+
+@login_required(login_url='Core:login_user')
+def delete_treasury(request, pk):
+    this = get_object_or_404(Treasury, id=pk)
+    if this.pharmacy != get_pharmacy(request):
+        return permission_error(request)
+    else:
+        this.delete()
+        return treasury(request)
+
+
+@login_required(login_url='Core:login_user')
 def bank_accounts(request):
     page_title = 'إدارة الحسابات البنكية'
-    accounts = BankAccounts.objects.filter(pharmacy=get_pharmacy(request))
+    accounts = Treasury.objects.filter(pharmacy=get_pharmacy(request), type=3)
     context = {
         'page_title': page_title,
         'accounts': accounts,
@@ -31,6 +93,7 @@ def add_bank_account(request):
         account = form.save(commit=False)
         account.pharmacy = get_pharmacy(request)
         account.balance = 0
+        account.type = 3
         account.save()
         message = "تم إضافة الحساب بنجاح"
     context = {
@@ -44,7 +107,7 @@ def add_bank_account(request):
 @login_required(login_url='Core:login_user')
 def edit_bank_account(request, account_id):
     page_title = 'تعديل حساب بنكي'
-    this_account = BankAccounts.objects.get(id=account_id)
+    this_account = Treasury.objects.get(id=account_id)
     if this_account.pharmacy != get_pharmacy(request):
         return permission_error(request)
     form = AddBankAccount(request.POST or None, instance=this_account)
@@ -63,7 +126,7 @@ def edit_bank_account(request, account_id):
 
 @login_required(login_url='Core:login_user')
 def delete_bank_account(request, account_id):
-    this_account = get_object_or_404(BankAccounts, id=account_id)
+    this_account = get_object_or_404(Treasury, id=account_id)
     if this_account.pharmacy != get_pharmacy(request):
         return permission_error(request)
     this_account.delete()
