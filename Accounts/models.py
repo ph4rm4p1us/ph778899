@@ -54,3 +54,24 @@ class BankAccounts(models.Model):
 
     def __balance__(self):
         return str(self.balance) + self.currency
+
+
+class ExpenseCategory(models.Model):
+    pharmacy = models.ForeignKey(Pharmacy, on_delete=models.CASCADE)
+    name = models.CharField(max_length=128)
+    parent = models.IntegerField(default=0)
+
+    def get_parent(self):
+        if self.parent == 0:
+            return False
+        else:
+            parent_category = ExpenseCategory.objects.get(id=self.parent)
+            return parent_category
+
+    def __str__(self):
+        parent = ExpenseCategory.get_parent(self)
+        if not parent:
+            return self.name
+        else:
+            return str(parent) + " > " + self.name
+

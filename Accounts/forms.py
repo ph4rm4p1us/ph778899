@@ -23,3 +23,18 @@ class AddBankAccount(forms.ModelForm):
             'account_number': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'رقم الحساب'}),
             'currency': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'العملة'}),
         }
+
+class AddExpenseCategory(forms.ModelForm):
+
+    class Meta:
+        model = ExpenseCategory
+        fields = [
+            'name',
+            ]
+
+        labels = {
+            'name': "اسم التصنيف",
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'اسم التصنيف'}),
+        }

@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(CustomerAccounts)
 admin.site.register(BankAccounts)
+admin.site.register(ExpenseCategory)

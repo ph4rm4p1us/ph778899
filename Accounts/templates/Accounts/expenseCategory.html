@@ -1,0 +1,46 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+                {{ page_title }}
+            </div>
+            <div class="panel-body">
+
+                <a href="{% url 'Accounts:add_expense_category' %}" class="btn btn-success pull-right">
+                    <span class="fa fa-plus"></span>
+                    إضافة
+                </a>
+                <table class="table table-responsive" id="example1">
+                    <thead class="btn-info">
+                    <tr>
+                        <td>اسم التصنيف</td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in categories %}
+                        <tr>
+                            <td>{{ x }}</td>
+                            <td>
+                                <a href="{% url 'Accounts:edit_expense_category' x.id %}" class="btn btn-primary" title="تعديل">
+                                    <span class="fa fa-edit"></span>
+                                </a>
+                                <a href="{% url 'Accounts:delete_expense_category' x.id %}" class="btn btn-danger" title="حذف">
+                                    <span class="fa fa-remove"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="btn-info">
+                    <tr>
+                        <td>اسم التصنيف</td>
+                        <td></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

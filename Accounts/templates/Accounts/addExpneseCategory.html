@@ -1,0 +1,35 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+                {{ page_title }}
+            </div>
+            <div class="panel-body">
+                {% if message %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endif %}
+                <form method="POST" action="#">
+                    {% csrf_token %}
+                    <table class="table table-responsive">
+                        {% include 'Core/form_template.html' %}
+                        <tr>
+                            <td>التصنيف الرئيسي</td>
+                            <td>
+                                <select class="select2 form-control" name="parent">
+                                    <option value="0">هذا التصنيف رئيسي</option>
+                                    {% for x in categories %}
+                                        <option value="{{ x.id }}"{% if this.id == x.id %} selected{% endif %}>{{ x }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <button type="submit" class="btn btn-success">إضافة</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
