@@ -60,10 +60,10 @@ class CoreMedicine(models.Model):
     price = models.FloatField(blank=False, default=0.0)
     med_unit_price = models.FloatField(blank=False, default=0.0)
     small_unit_price = models.FloatField(blank=True, null=True, default=0.0)
-    med_unit = models.IntegerField(blank=False, max_length=11)
-    small_unit = models.IntegerField(blank=True, null=True, max_length=11)
+    med_unit = models.IntegerField(blank=False)
+    small_unit = models.IntegerField(blank=True, null=True)
     licence = models.ForeignKey(Licence, on_delete=models.CASCADE)
-    storage_temp = models.IntegerField(max_length=3)
+    storage_temp = models.IntegerField()
 
     def __str__(self):
         return self.commercial_name + '-' + self.barcode + '-' + self.arabic_name + '-' + self.brand.name + '-' + self.type.type
@@ -120,7 +120,7 @@ class Clients(models.Model):
     allow_negative_balance = models.BooleanField(default=True)
     max_negative_balance = models.FloatField(default=0)
     balance = models.FloatField(default=0)
-    discount_percent = models.IntegerField(max_length=3, blank=False, default=0)
+    discount_percent = models.IntegerField(blank=False, default=0)
     pharmacy = models.ForeignKey(Pharmacy, on_delete=models.CASCADE, blank=False)
 
     def __str__(self):
@@ -144,7 +144,9 @@ class Employees(models.Model):
     national_id = models.IntegerField(null=True)
     balance = models.FloatField(default=0)
     branch = models.ForeignKey(Branches, on_delete=models.CASCADE, null=True)
+    salary = models.IntegerField(default=0)
+    joined_date = models.DateTimeField(null=True)
+    left_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name
-

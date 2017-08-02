@@ -1,0 +1,93 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="modal fade" role="dialog" id="productSetting">
+        <div class="modal-dialog">
+            <div class="modal-header bg-pharma-blue">
+                إدارة المنتج
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:white;">&times;
+                </button>
+
+            </div>
+            <div class="modal-body bg-pharma-green" id="productModal">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+                إدارة الموظفين
+            </div>
+            <div class="panel-body main_panel" style="overflow-y: auto;">
+                <table class="table table-resposive" id="'example1">
+                    <thead>
+                    <tr>
+                        <td>
+                            اسم الموظف
+                        </td>
+                        <td>
+                            اسم المستخدم
+                        </td>
+                        <td>
+                            ايميل
+                        </td>
+                        <td>
+                            الحالة
+                        </td>
+                        <td>
+                            تاريخ التسجيل
+                        </td>
+                        <td>
+                            اخر تسجيل دخول
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in users %}
+
+                        <tr>
+                            <td>
+                                {{ x.user.first_name }} {{ x.user.last_name }}
+                            </td>
+                            <td>
+                                {{ x.user.username }}
+                            </td>
+                            <td>
+                                {{ x.user.email }}
+                            </td>
+                            <td>
+                                {% if x.user.is_active %}<label class="label label-success"><span class="fa fa-check"></span></label>{% endif %}
+                                {% if x.user.is_active == False %}<label class="label label-danger"><span class="fa fa-remove"></span></label>{% endif %}
+                            </td>
+                            <td>
+                                {{ x.user.date_joined }}
+                            </td>
+                            <td>
+                                {{ x.user.last_login }}
+                            </td>
+                            <td>
+<a class="btn btn-info"><span class="fa fa-edit"></span> تعديل</a>
+{% if x.user.is_active %}<a class="btn btn-danger"><span class="fa fa-lock"></span> تعطيل</a>{% endif %}
+{% if x.user.is_active == False %}<a class="btn btn-success"><span class="fa fa-unlock"></span> تفعيل</a>{% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        function get_product_settings() {
+            var myDiv = $('#productModal');
+            var id = $('.select2 option:selected').val();
+            var myModal = $('#productSetting');
+            myModal.modal('show');
+            myDiv.load(window.location.origin + '{% url 'System_Setting:product_setting' %}' + '?id=' + id);
+        }
+    </script>
+{% endblock %}

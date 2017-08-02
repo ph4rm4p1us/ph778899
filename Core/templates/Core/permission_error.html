@@ -1,0 +1,27 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-darkred center">
+                {{ page_title }}
+            </div>
+            <div class="panel-body">
+                {% if message %}
+                    <div class="center">
+                    </div>
+                    <div class="alert alert-danger">
+
+                        <span class="fa fa-info-circle fa-5x"></span>
+                        {{ message }}
+                        <button class="btn btn-info" onclick="goBack()">رجوع</button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+{% endblock %}

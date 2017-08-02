@@ -40,3 +40,17 @@ class CustomerAccounts(models.Model):
 
     def __str__(self):
         return self.customer.name + '-' + self.comment
+
+
+class BankAccounts(models.Model):
+    pharmacy = models.ForeignKey(Pharmacy, on_delete=models.CASCADE)
+    bank = models.CharField(max_length=64)
+    account_number = models.IntegerField()
+    balance = models.FloatField()
+    currency = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.bank + str(self.account_number)
+
+    def __balance__(self):
+        return str(self.balance) + self.currency

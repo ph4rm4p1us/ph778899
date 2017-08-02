@@ -1,0 +1,61 @@
+{% extends 'Core/base.html' %}
+{% block body %}
+    <div class="col-lg-11 col-xs-10 system_page">
+        <div class="panel" style="overflow-y: auto;">
+            <div class="panel-heading bg-pharma-blue center">
+                {{ page_title }}
+            </div>
+            <div class="panel-body">
+
+                <a href="{% url 'Accounts:add_bank_account' %}" class="btn btn-success pull-right">
+                    <span class="fa fa-plus"></span>
+                    إضافة
+                </a>
+                <table class="table table-responsive" id="example1">
+                    <thead class="btn-info">
+                    <tr>
+                        <td>البنك</td>
+                        <td>رقم الحساب</td>
+                        <td>الرصيد</td>
+                        <td>العملة</td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for account in accounts %}
+                        <tr>
+                            <td>{{ account.bank }}</td>
+                            <td>{{ account.account_number }}</td>
+                            <td>{{ account.balance }}</td>
+                            <td>{{ account.currency }}</td>
+                            <td>
+                                <a href="{% url 'Accounts:edit_bank_account' account.id %}" class="btn btn-primary" title="تعديل">
+                                    <span class="fa fa-edit"></span>
+                                </a>
+                                <a href="" class="btn btn-success" title="إيداع">
+                                    <span class="fa fa-arrow-circle-down"></span>
+                                </a>
+                                <a href="" class="btn btn-warning" title="سحب">
+                                    <span class="fa fa-arrow-circle-up"></span>
+                                </a>
+                                <a href="{% url 'Accounts:delete_bank_account' account.id %}" class="btn btn-danger" title="حذف">
+                                    <span class="fa fa-remove"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="btn-info">
+                    <tr>
+                        <td>البنك</td>
+                        <td>رقم الحساب</td>
+                        <td>الرصيد</td>
+                        <td>العملة</td>
+                        <td></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

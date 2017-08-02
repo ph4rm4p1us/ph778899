@@ -19,7 +19,7 @@ class PurchaseItems(models.Model):
     purchase_price = models.FloatField(blank=False, default=0.0)
     net_price = models.FloatField(blank=False, default=0.0)
     bounce = models.FloatField()
-    discount = models.IntegerField(blank=False, max_length=3)
+    discount = models.IntegerField(blank=False)
     purchase_invoice_id = models.ForeignKey(PurchasesInvoice, on_delete=models.CASCADE)
 
 

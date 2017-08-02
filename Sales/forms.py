@@ -90,5 +90,5 @@ class ReverseInvoiceForm(forms.ModelForm):
             'id': "رقم الفاتورة"
         }
         widgets = {
-            'id': forms.Select(attrs={'class': 'form-control'})
+            'id': forms.NumberInput(attrs={'class': 'form-control'})
         }

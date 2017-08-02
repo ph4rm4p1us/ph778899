@@ -1,5 +1,6 @@
 {% extends 'Core/empty_base.html' %}
 {% block body %}
+
     <table class="table table-responsive">
         <thead>
         <tr>
@@ -38,11 +39,40 @@
                     {{ x.total_price }}
                 </td>
                 <td>
-                    <a class='btn btn-info' target="_blank" href="{% url 'Sales:edit_invoice' x.id %}"><span class="fa fa-edit"></span></a>
+
+                    {% if x.status == 0 %}
+                        <button class="btn btn-success" onclick="save_invoice({{ x.id }})"><span class="fa fa-money"></span>
+                        </button>
+                    {% endif %}
+                    <a class='btn btn-info' target="_blank" href="{% url 'Sales:edit_invoice' x.id %}"><span
+                            class="fa fa-edit"></span></a>
+                    {% if x.status == 1 %}
+                        <a class="btn btn-success" target="_blank" href='{% url 'Sales:save_invoice' x.id %}'><span class="fa fa-money"></span>
+                        </a>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
+<script>
+function pay_invoice(id) {
+            var myModal = $('#reverseMessage');
+            var payModal = $('#reverseModal');
+            payModal.modal('show');
+            myModal.load(window.location.origin + '/Sales/Invoice/Reverse/Item?id=' + id)
+            setTimeout(function(){
+                location.reload()
+            },3000)
+}
+function save_invoice(id) {
+            var myModal = $('#reverseMessage');
+            var payModal = $('#reverseModal');
+            payModal.modal('show');
+            myModal.load(window.location.origin + '/Sales/Invoice/Reverse/Item?id=' + id)
+            setTimeout(function(){
+                location.reload()
+            },3000)
+}
+</script>
 {% endblock %}

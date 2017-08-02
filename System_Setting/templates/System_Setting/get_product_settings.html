@@ -1,0 +1,22 @@
+{% extends 'Core/empty_base.html' %}
+{% block body %}
+
+    {{ product.product.arabic_name }}
+    <form method="post" id="defaultForm" target="_self" action="?id={{ product.product.id }}">
+        {% csrf_token %}
+        {% include 'Core/form_template.html' %}
+        <button class="btn btn-info"><span class="fa fa-save"></span>حفظ</button>
+    </form>
+    <script>
+        $(document).on('submit', '#defaultForm', function (e) {
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: $(this).serialize()
+            });
+            e.preventDefault();
+            alert('تم التعديل بنجاح');
+            $('#productSetting').modal('hide');
+        });
+    </script>
+{% endblock %}

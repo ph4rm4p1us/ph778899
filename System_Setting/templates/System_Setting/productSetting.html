@@ -17,16 +17,12 @@
     <div class="col-lg-11 col-xs-10 system_page">
         <div class="panel" style="overflow-y: auto;">
             <div class="panel-heading bg-pharma-blue center">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6 col-xs-12">
-                        إدارة المنتجات
-                    </div>
-                </div>
+                إدارة المنتجات
             </div>
             <div class="panel-body main_panel" style="overflow-y: auto;">
-                <select name="medicine" class="select2 form-control" onchange="get_product_settings()">
+                <select id="select2" name="id" class="select2 form-control" onchange="get_product_settings()">
                     <option selected>اختر دواء</option>
-                    {% for x in x %}
+                    {% for x in all_products %}
                         <option value="{{ x.id }}"
                                 {% if x.main_unit_stock == 0 %}
                                 class="bg-danger"
@@ -40,11 +36,21 @@
                         </option>
                     {% endfor %}
                 </select>
+            <div class="row">
+                <div id="product_setting">
+
+                </div>
+            </div>
             </div>
         </div>
     </div>
     <script>
-        $('document').ready(function () {
-        });
+    function get_product_settings() {
+        var myDiv = $('#productModal');
+        var id = $('.select2 option:selected').val();
+        var myModal = $('#productSetting');
+        myModal.modal('show');
+        myDiv.load(window.location.origin + '{% url 'System_Setting:product_setting' %}' + '?id=' + id);
+    }
     </script>
 {% endblock %}
